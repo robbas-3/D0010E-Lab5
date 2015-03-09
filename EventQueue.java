@@ -1,44 +1,45 @@
-package lists;
-
-import evvent.Event;
+package event;
 
 public class EventQueue {
 	private SortedSequence sortSeq;
-	public EventQueue(Event startEvent){
-		sortSeq= new SortedSequence();
+
+	public EventQueue(SortedSequence sortSeq) {
+		sortSeq = new SortedSequence();
 	}
+
 	/**
 	 * Checking if the queue has another element.
 	 */
-	public Boolean hasNext(){
-		if(sortSeq.getSize()==0){
+	public Boolean hasNext(int i) {
+		if (sortSeq.getSize() > i+1) {
 			System.out.println("finns inga mer event.");
-			return false;	
-		}
-		else{
+			return false;
+		} else {
 			return true;
 		}
 	}
+ 
 	/**
-	 * Taking the first element in the queue and then removes it from the sortedSeq. 
-	 * Because if we execute an event it must PERISH!
+	 * Taking the first element in the queue and then removes it from the
+	 * sortedSeq. Because if we execute an event it must PERISH!
 	 */
-	public Event next(){
-		if(hasNext())
-			return null;
-		else{
+	public Event next() {
+		if (hasNext(0)){
 			Event nextElement = sortSeq.getElement(0);
 			sortSeq.removeEvent(0);
 			return nextElement;
-			
+	
+		}
+		else {
+			return null;
 		}
 	}
+
 	/**
 	 * 
 	 * @return returns the private var sortSeq.
 	 */
-	public SortedSequence getSortedSequence(){
+	public SortedSequence getSortedSequence() {
 		return sortSeq;
 	}
-	
 }
