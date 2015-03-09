@@ -1,54 +1,75 @@
 package evvent;
 
-import lists.EventQueue;
-import lists.SortedSequence;
-import states.SimState;
+//import states.SimState;
+
 /*
  * Skapar bland annat event som skickas till sorted Seq som sorterar den
  * denna sorterade sekvens sparas sedan i eventQueue
  */
-public class Event {
-	public SimState state;
+public class Event implements Comparable <Event> {
+	
+	//public SimState state;
 	private SortedSequence sortedSequence;
 	private String name;
-	private double eventTime;
-	public Event(double time){
-		eventTime=time;
-		//name = s;
+	public double eventTime;
+
+	public Event(double time) {
+		eventTime = time;
+		// name = s;
 	}
-	public double getEventTime(){
+
+	public double getEventTime() {
 		return eventTime;
 	}
 	/**
 	 * 
-	 * @param state sending state so it can be changed accordingly.
-	 * @param eventQueue making it occur and jumps to next one
-	 * @return 
+	 * @param state
+	 *            sending state so it can be changed accordingly.
+	 * @param eventQueue
+	 *            making it occur and jumps to next one
+	 * @return
 	 */
-	public void execEvent(SimState state,EventQueue eventQueue){
+	public void execEvent( EventQueue eventQueue) {
 	}
-		// hmm gör något kul här
+
+	// hmm gör något kul här
 	/**
 	 * 
-	 * @param sortedSequence sending sortedSeq so it can be updated
-	 * with the newly created event
+	 * @param sortedSequence
+	 *            sending sortedSeq so it can be updated with the newly created
+	 *            event
 	 */
-	public void createNextEvent(SortedSequence sortedSequence,Event event){
-		sortedSequence.add(event);
+	public void createNewEvent(SortedSequence sortedSequence, Event event) {
+		sortedSequence.addNsort(event);
 	}
+
 	/**
 	 * 
 	 * @return returning the private name
 	 */
-	public String getName(){
+	public String getName() {
 		return this.name;
 	}
+
 	/**
 	 * 
 	 * @return getting access to the sortedSeq if needed.
 	 */
-	public SortedSequence getSequence(){
+	public SortedSequence getSequence() {
 		return this.sortedSequence;
 	}
-}
 
+	@Override
+	public int compareTo(Event otherEvent) {
+		if(this.eventTime==otherEvent.eventTime){
+			return 0;
+		}
+		else if(this.eventTime<otherEvent.eventTime){
+			return 1;
+		}
+		else {
+			return -1;
+		}
+	}
+	
+}
