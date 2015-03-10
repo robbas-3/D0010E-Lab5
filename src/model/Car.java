@@ -3,7 +3,7 @@ package model;
 public class Car {
 	
 	private int id;
-	private double queueTime;
+	private double queueTime = 0;
 	
 	public Car(int id){
 		this.id = id;
