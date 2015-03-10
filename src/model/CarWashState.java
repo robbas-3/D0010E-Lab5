@@ -52,7 +52,10 @@ public class CarWashState extends SimState{
 		
 		carFactory = new CarFactory();
 	}
-	
+
+	public double arrivalTime(){
+		return arrivalRandomTime.next();
+	}
 	public double getLambda(){
 		return lambda;
 	}
