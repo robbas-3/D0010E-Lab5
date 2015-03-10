@@ -1,4 +1,6 @@
 package event;
+import simulator.Simulator;
+import model.SimState;
 
 /**
  * StartEvent is an Event that starts the simulation.
@@ -7,6 +9,7 @@ package event;
  * 
  */
 public class StartEvent extends Event {
+	private Simulator simulator;
 	/**
 	 * Skuggning
 	 * 
@@ -15,13 +18,21 @@ public class StartEvent extends Event {
 	 * @param eventQueue
 	 *            making it occur and jumps to next one
 	 */
-	public StartEvent(double time) {
-		super(time,"Start");
+	public StartEvent(double time,String s) {
+		super(time,s);
 	}
 
-	public void execEvent(SimState state, EventQueue eventQueue) {
+	@Override
+	public void execEvent(SimState state,EventQueue eventQueue) {
 		// hmm gör något kul här
-		state.start();
+		simulator.start();
 		eventQueue.next(); // hoppar till nästa??
+		
+	}
+
+	@Override
+	public void createNextEvent(double time, Event event) {
+		// TODO Auto-generated method stub
+		
 	}
 }
