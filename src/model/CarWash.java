@@ -10,7 +10,6 @@ public class CarWash {
 	}
 	
 	public void cleanCar(){
-		empty = true;
 		car = null;
 	}
 	
@@ -22,5 +21,8 @@ public class CarWash {
 	public boolean isEmpty(){
 		return empty;
 	}
-
+	public void emptyCarWash(){
+		empty = true;
+	}
+	
 }
