@@ -108,18 +108,25 @@ public class CarWashState extends SimState{
 		for(FastCarWash fcw:fastCarWash){
 			if(fcw.isEmpty()){
 				fcw.setCar(car);
+				car.stopQueue();
+				setChanged();
+				notifyObservers();
 				return fcw;
 			}
 		}
 		for(SlowCarWash scw:slowCarWash){
 			if(scw.isEmpty()){
 				scw.setCar(car);
+				car.stopQueue();
+				setChanged();
+				notifyObservers();
 				return scw;
 			}
 		}
 		
 		if(carQueue.size() <= queueSize){
 			carQueue.add(car);
+			car.startQueue();
 			queueCars++;
 		}else{
 			rejectedCarsSize ++;
