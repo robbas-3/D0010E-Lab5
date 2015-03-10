@@ -16,15 +16,15 @@ public class CarWashView extends SimView {
 		Writefirst();
 	}
 	private void Writefirst(){
-		 write("Fast machines: %d", CWState.);// fast machines amount
-		 write("Fast machines: %d", CWState.);// slow machines amount
+		 write("Fast machines: %d", CWState.fastCarWashes());
+		 write("Fast machines: %d", CWState.slowCarWashes());
 		 
-		 write("Fast distribution: (%.1f, %.1f)", CWState. );// Fast distribution low/high
-	     write("Slow distribution: (%.1f, %.1f)", CWState.);// slow distribution low/
+		 write("Fast distribution: (%.1f, %.1f)", CWState.getFastLower()(), CWState.getFastUpper() );
+	     write("Slow distribution: (%.1f, %.1f)", CWState.getSlowLower(), CWState.getSlowUpper()));
 	     write("Exponential distribution with lambda = %.1f", CWState.);// lambda distribution
 		 
-		 write("Seed = %d", CWState.);//seed
-	     write("Max Queue size: %d", CWState.);// Max queue size
+		 write("Seed = %d", CWState.getSeed());
+	     write("Max Queue size: %d", CWState.getQueueSize());
 	     write("-----------------------------------");
 	     write("%-8s%-6s%-6s%-5s%-11s%-10s%-11s%-11s%-10s", "Time", "Fast", "Slow", "Id", "Event", "IdleTime", "QueueTime", "QueueSize", "Rejected");
 		 
@@ -33,8 +33,10 @@ public class CarWashView extends SimView {
 	private void Writelast(){
 		write("---------------------------");
 	    write("Total idle matchine time: %.2f", CWState.getIdleTime());
-	    write("Total queueing time: %.2f", CWState.);//queue time total
-	    write("Mean queueing time: %.2f", ); //?
+	    write("Total queueing time: %.2f", CWState.getTime());//queue time total
+	    write("Mean queueing time: %.2f", CWState. ); //?
 	    write("Rejected cars: %d", CWState.getRejectedCars());
 	}
+	
+	
 }
