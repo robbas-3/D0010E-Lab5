@@ -50,16 +50,5 @@ public class Event implements Comparable <Event> {
 	public String getName() {
 		return this.name;
 	}
-	
-	@Override
-	public int compareTo(Event otherEvent) {
-		if(this.eventTime==otherEvent.eventTime){
-			return 0;
-		}
-		else if(this.eventTime<otherEvent.eventTime){
-			return 1;
-		}
-		else {
-			return -1;
-		}
-	}
+
+	/**
