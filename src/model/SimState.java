@@ -5,7 +5,7 @@ import java.util.Observable;
 
 import event.Event;
 
-public class SimState extends Observable {
+public abstract class SimState extends Observable {
 	
 	private double time;
 	private Event currentEvent;
