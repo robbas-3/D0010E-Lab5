@@ -4,7 +4,9 @@ import java.util.Observable;
 
 import event.ArriveEvent;
 import event.Event;
+import event.StopEvent;
 import model.Car;
+import model.CarWash;
 import model.CarWashState;
 import model.SimState;
 
@@ -50,7 +52,7 @@ public class CarWashView extends SimView {
 		
 		String id = "-";
 		if (ev instanceof ArriveEvent){
-			id = 
+			id = ; 
 		}
 		
 		if (ev instanceof LeavEvent){
@@ -67,6 +69,11 @@ public class CarWashView extends SimView {
                 c.getQueueTime(),
                 CWState.getQueueSize(),
                 CWState.getRejectedCars());
+		
+		if(ev instanceof StopEvent) {
+            Writelast();
+		}
+		
 	}
 	
 }
