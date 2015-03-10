@@ -3,15 +3,15 @@ package event;
 public class EventQueue {
 	private SortedSequence sortSeq;
 
-	public EventQueue(SortedSequence sortSeq) {
-		sortSeq = new SortedSequence();
+	public EventQueue(SortedSequence sortSeq){
+		this.sortSeq = sortSeq;
 	}
 
 	/**
 	 * Checking if the queue has another element.
 	 */
 	public Boolean hasNext() {
-		if (sortSeq.getSize() > 0) {
+		if (sortSeq.getSize()  == 0) {
 			System.out.println("finns inga mer event.");
 			return false;
 		} else {
