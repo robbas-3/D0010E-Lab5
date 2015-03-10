@@ -14,7 +14,7 @@ public class CarWash {
 		car = null;
 	}
 	
-	public void addCar(Car car){
+	public void setCar(Car car){
 		this.car = car;
 		empty = false;
 	}

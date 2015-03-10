@@ -59,13 +59,13 @@ public class CarWashState extends SimState{
 		
 		for(FastCarWash fcw:fastCarWash){
 			if(fcw.isEmpty()){
-				fcw.addCar(car);
+				fcw.setCar(car);
 				return true;
 			}
 		}
 		for(SlowCarWash scw:slowCarWash){
 			if(scw.isEmpty()){
-				scw.addCar(car);
+				scw.setCar(car);
 				return true;
 			}
 		}
@@ -77,6 +77,10 @@ public class CarWashState extends SimState{
 		}
 
 		return false;
+	}
+	
+	public int getQueueSize(){
+		return queueSize;
 	}
 	
 }

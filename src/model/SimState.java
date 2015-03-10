@@ -3,21 +3,23 @@ package model;
 import java.util.ArrayList;
 import java.util.Observable;
 
+import event.Event;
+
 public class SimState extends Observable {
 	
 	private double time;
-	//private currentEvent event;
+	private Event currentEvent;
 	
 	public double getTime(){
 		return time;
 	}
 	
-//	public Event getCurrentEvent(){
-//		return event
-//	}
-//	
-//	public void setEvent(Event event){
-//		this.event = event;
-//	}
+	public Event getCurrentEvent(){
+		return currentEvent;
+	}
+	
+	public void setEvent(Event event){
+		this.currentEvent = event;
+	}
 	
 }
