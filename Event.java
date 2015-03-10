@@ -1,4 +1,4 @@
-package evvent;
+package event;
 
 //import states.SimState;
 
@@ -13,9 +13,9 @@ public class Event implements Comparable <Event> {
 	private String name;
 	public double eventTime;
 
-	public Event(double time) {
+	public Event(double time,String s) {
 		eventTime = time;
-		// name = s;
+		name = s;
 	}
 
 	public double getEventTime() {
@@ -52,24 +52,3 @@ public class Event implements Comparable <Event> {
 	}
 
 	/**
-	 * 
-	 * @return getting access to the sortedSeq if needed.
-	 */
-	public SortedSequence getSequence() {
-		return this.sortedSequence;
-	}
-
-	@Override
-	public int compareTo(Event otherEvent) {
-		if(this.eventTime==otherEvent.eventTime){
-			return 0;
-		}
-		else if(this.eventTime<otherEvent.eventTime){
-			return 1;
-		}
-		else {
-			return -1;
-		}
-	}
-	
-}
