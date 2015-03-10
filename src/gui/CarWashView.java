@@ -7,7 +7,6 @@ import event.ArriveEvent;
 import event.Event;
 import event.StopEvent;
 import model.Car;
-import model.CarWash;
 import model.CarWashState;
 import model.SimState;
 
