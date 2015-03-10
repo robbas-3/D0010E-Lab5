@@ -33,7 +33,7 @@ public class ArriveEvent extends Event {
 		}
 	}
 	
-	@Override
+
 	public void createNextEvent(double time, Event event) {
 		createNewEvent(eventQueue.getSortedSequence(),event);
 	}

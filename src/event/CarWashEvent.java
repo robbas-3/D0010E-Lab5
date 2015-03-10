@@ -24,7 +24,7 @@ public class CarWashEvent extends Event{
 		carWash.cleanCar();
 	}
 
-	@Override
+
 	public void createNextEvent(double time, Event event) {
 		
 		createNewEvent(eventQueue.getSortedSequence(),new LeaveEvent(time,"Leave"));

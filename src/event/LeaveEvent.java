@@ -16,7 +16,7 @@ public class LeaveEvent extends Event {
 	}
 
 
-	@Override
+
 	public void createNextEvent(double time, Event event) {
 		// TODO Auto-generated method stub
 		
