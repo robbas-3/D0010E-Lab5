@@ -19,15 +19,25 @@ public class CarWashView extends SimView {
 		 write("Fast machines: %d", CWState.fastCarWashes());
 		 write("Fast machines: %d", CWState.slowCarWashes());
 		 
-		 write("Fast distribution: (%.1f, %.1f)", CWState.getFastLower()(), CWState.getFastUpper() );
+		 write("Fast distribution: (%.1f, %.1f)", CWState.getFastLower(), CWState.getFastUpper();
 	     write("Slow distribution: (%.1f, %.1f)", CWState.getSlowLower(), CWState.getSlowUpper()));
-	     write("Exponential distribution with lambda = %.1f", CWState.);// lambda distribution
+	     write("Exponential distribution with lambda = %.1f", CWState.getLambda());
 		 
 		 write("Seed = %d", CWState.getSeed());
 	     write("Max Queue size: %d", CWState.getQueueSize());
 	     write("-----------------------------------");
 	     write("%-8s%-6s%-6s%-5s%-11s%-10s%-11s%-11s%-10s", "Time", "Fast", "Slow", "Id", "Event", "IdleTime", "QueueTime", "QueueSize", "Rejected");
 		 
+		
+	}
+	private void write(String string, double fastLower, double fastUpper,
+			Object write) {
+		// TODO Auto-generated method stub
+		
+	}
+	private void write(String string, double fastLower, double fastUpper,
+			Object write) {
+		// TODO Auto-generated method stub
 		
 	}
 	private void Writelast(){
