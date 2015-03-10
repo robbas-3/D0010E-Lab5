@@ -15,6 +15,8 @@ public class CarWashState extends SimState{
 	private double idleTime;
 	private double queueTime;
 	
+	private CarFactory carFactory;
+	
 	private ExponentialRandomStream ers;
 	private UniformRandomStream urs;
 	
@@ -26,6 +28,7 @@ public class CarWashState extends SimState{
 			slowCarWash.add(new SlowCarWash());
 		}
 		
+		carFactory = new CarFactory();
 	}
 	
 	public int emptySlowCarWashes(){
@@ -84,5 +87,10 @@ public class CarWashState extends SimState{
 	public double getIdleTime(){
 		return idleTime;
 	}
+	
+	public CarFactory getCarFactory(){
+		return carFactory;
+	}
+	
 	
 }
