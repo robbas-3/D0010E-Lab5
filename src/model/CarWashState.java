@@ -16,6 +16,8 @@ public class CarWashState extends SimState{
 	private double queueTime;
 	private int seed;
 	private double lower, upper;
+	private int queueCars;
+	private double time;
 	
 	private CarFactory carFactory;
 	
@@ -111,6 +113,7 @@ public class CarWashState extends SimState{
 		
 		if(carQueue.size() <= queueSize){
 			carQueue.add(car);
+			queueCars++;
 		}else{
 			rejectedCarsSize ++;
 		}
@@ -121,7 +124,12 @@ public class CarWashState extends SimState{
 	public int getQueueSize(){
 		return queueSize;
 	}
-	
+	public int getCarQueueSize(){
+		return carQueue.size();
+	}
+	public int getQueueCars(){
+		return queueCars;
+	}
 	public double getIdleTime(){
 		return idleTime;
 	}
@@ -137,5 +145,9 @@ public class CarWashState extends SimState{
 	}
 	public int fastCarWashes(){
 		return fastCarWash.size();
+	}
+	
+	public double getTime(){
+		return time;
 	}
 }
