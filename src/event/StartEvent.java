@@ -1,6 +1,7 @@
 package event;
-import simulator.Simulator;
+import model.CarWashState;
 import model.SimState;
+import simulator.Simulator;
 
 /**
  * StartEvent is an Event that starts the simulation.
@@ -10,6 +11,8 @@ import model.SimState;
  */
 public class StartEvent extends Event {
 	private Simulator simulator;
+	private EventQueue eventQueue;
+	private CarWashState cWS;
 	/**
 	 * Skuggning
 	 * 
@@ -22,17 +25,18 @@ public class StartEvent extends Event {
 		super(time,s);
 	}
 
-	@Override
+
 	public void execEvent(SimState state,EventQueue eventQueue) {
 		// hmm gör något kul här
 		simulator.start();
-		eventQueue.next(); // hoppar till nästa??
+		state.setEvent(this);
+		createNextEvent(cWS.arrivalTime(),new ArriveEvent(cWS.arrivalTime(),"Arrive",eventQueue,cWS));
 		
 	}
 
-	@Override
+	
 	public void createNextEvent(double time, Event event) {
-		// TODO Auto-generated method stub
 		
+		createNewEvent(eventQueue.getSortedSequence(),event);
 	}
 }
