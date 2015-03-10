@@ -10,8 +10,8 @@ public class EventQueue {
 	/**
 	 * Checking if the queue has another element.
 	 */
-	public Boolean hasNext(int i) {
-		if (sortSeq.getSize() > i+1) {
+	public Boolean hasNext() {
+		if (sortSeq.getSize() > 0) {
 			System.out.println("finns inga mer event.");
 			return false;
 		} else {
@@ -24,7 +24,7 @@ public class EventQueue {
 	 * sortedSeq. Because if we execute an event it must PERISH!
 	 */
 	public Event next() {
-		if (hasNext(0)){
+		if (hasNext()){
 			Event nextElement = sortSeq.getElement(0);
 			sortSeq.removeEvent(0);
 			return nextElement;
@@ -33,6 +33,7 @@ public class EventQueue {
 		else {
 			return null;
 		}
+	
 	}
 
 	/**
