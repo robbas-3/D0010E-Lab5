@@ -17,7 +17,6 @@ public class CarWashState extends SimState{
 	private int seed;
 	private double lower, upper;
 	private int queueCars;
-	private double time;
 	
 	private CarFactory carFactory;
 	
@@ -34,7 +33,6 @@ public class CarWashState extends SimState{
 			slowCarWash.add(new SlowCarWash());
 		}
 		
-		time = System.currentTimeMillis();
 		idleTime = 0;
 		idleTime = System.currentTimeMillis();
 		
@@ -180,9 +178,6 @@ public class CarWashState extends SimState{
 		return fastCarWash.size();
 	}
 	
-	public double getTime(){
-		return System.currentTimeMillis() - time;
-	}
 public double meanQueueingTime() {
 		
 		return (getQueueCars() == 0) ? 0 :  getQueueTime() / carFactory.getCarAmount() ;
