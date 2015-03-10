@@ -24,7 +24,7 @@ public class CarWashState extends SimState{
 	private UniformRandomStream randomFastWash;
 	private UniformRandomStream randomSlowWash;
 	private ExponentialRandomStream arrivalRandomTime;
-	double fastLower, fastUpper, slowLower, slowUpper;
+	double fastLower, fastUpper, slowLower, slowUpper, lambda;
 	
 	public CarWashState(int seed, int fastAmount, int slowAmount, int queueSize, double fastLower, double fastUpper ,double slowUpper, double slowLower, double lambda){
 		for(int i = 0; i < fastAmount; i++){
@@ -44,6 +44,7 @@ public class CarWashState extends SimState{
 		this.fastUpper = fastUpper;
 		this.slowLower = slowLower;
 		this.slowUpper = slowUpper;
+		this.lambda = lambda;
 		
 		randomFastWash = new UniformRandomStream(fastLower,fastUpper,seed);
 		randomSlowWash = new UniformRandomStream(slowLower,slowUpper,seed);
@@ -52,14 +53,15 @@ public class CarWashState extends SimState{
 		carFactory = new CarFactory();
 	}
 	
-	
+	public double getLambda(){
+		return lambda;
+	}
 	public double getFastTime(){
 		return randomFastWash.next();
 	}
 	public double getSlowTime(){
 		return randomSlowWash.next();
 	}
-	
 	public double getSlowLower(){
 		return slowLower;
 	}
