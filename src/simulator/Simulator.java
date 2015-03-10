@@ -1,5 +1,6 @@
 package simulator;
 
+import event.ArriveEvent;
 import event.EventQueue;
 import event.SortedSequence;
 import event.StartEvent;
@@ -11,7 +12,7 @@ public class Simulator {
 	private boolean on;
 	
 	public Simulator(){
-		on = false;
+		on = true;
 		Driver();
 	}
 	
@@ -31,10 +32,15 @@ public class Simulator {
 		EventQueue eq = new EventQueue(new SortedSequence());
 		eq.getSortedSequence().addNsort(new StartEvent(0,"Start"));;
 		
+		double time = 0;// Next arrivalTime fungerar inte. Fixar det senare.
+		while(time < 15.0){
+			eq.getSortedSequence().addNsort(new ArriveEvent(time++, "Arrive", eq, cws));
+		}
+		
 		while(on){
 			if(eq.hasNext()){
-				if(eq.getSortedSequence().getElement(0).getEventTime() > cws.getTime()){
-					eq.next();
+				if(eq.getSortedSequence().getElement(0).getEventTime() < cws.getTime()){
+					eq.next().execEvent(cws,eq);
 				}
 			}
 		}
