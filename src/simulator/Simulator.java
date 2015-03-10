@@ -12,7 +12,7 @@ public class Simulator {
 	
 	public Simulator(){
 		on = false;
-		
+		Driver();
 	}
 	
 	private void Driver(){

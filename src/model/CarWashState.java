@@ -25,6 +25,9 @@ public class CarWashState extends SimState{
 	double fastLower, fastUpper, slowLower, slowUpper, lambda;
 	
 	public CarWashState(int seed, int fastAmount, int slowAmount, int queueSize, double fastLower, double fastUpper ,double slowUpper, double slowLower, double lambda){
+		fastCarWash = new ArrayList<FastCarWash>();
+		slowCarWash = new ArrayList<SlowCarWash>();
+		
 		for(int i = 0; i < fastAmount; i++){
 			fastCarWash.add(new FastCarWash());
 		}
