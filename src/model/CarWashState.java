@@ -99,5 +99,10 @@ public class CarWashState extends SimState{
 	public int getSeed(){
 		return seed;
 	}
-	
+	public int slowCarWashes(){
+		return slowCarWash.size();
+	}
+	public int fastCarWashes(){
+		return fastCarWash.size();
+	}
 }
