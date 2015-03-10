@@ -14,6 +14,7 @@ public class CarWashState extends SimState{
 	private int rejectedCarsSize = 0;
 	private double idleTime;
 	private double queueTime;
+	private int seed;
 	
 	private CarFactory carFactory;
 	
@@ -29,6 +30,8 @@ public class CarWashState extends SimState{
 		}
 		
 		this.queueSize = queueSize;
+		
+		this.seed = seed;
 		
 		carFactory = new CarFactory();
 	}
@@ -93,6 +96,8 @@ public class CarWashState extends SimState{
 	public CarFactory getCarFactory(){
 		return carFactory;
 	}
-	
+	public int getSeed(){
+		return seed;
+	}
 	
 }
