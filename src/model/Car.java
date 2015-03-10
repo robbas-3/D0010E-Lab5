@@ -16,11 +16,9 @@ public class Car {
 	public void startQueue(){
 		queueTime = System.currentTimeMillis();
 	}
-	public void stopQueue(){
-		queueTime = System.currentTimeMillis() - queueTime;
+	public double stopQueue(){
+		return System.currentTimeMillis() - queueTime;
 	}
-	public double getQueueTime(){
-		return queueTime;
-	}
+
 	
 }
