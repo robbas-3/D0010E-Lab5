@@ -15,7 +15,6 @@ public class CarWashState extends SimState{
 	private double idleTime, idleTimeTemp;
 	private double queueTime;
 	private int seed;
-	private double lower, upper;
 	private int queueCars;
 	
 	private CarFactory carFactory;
