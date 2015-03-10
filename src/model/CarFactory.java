@@ -9,5 +9,11 @@ public class CarFactory {
 		carAmount++;
 		return car;
 	}
-
+	public void rejected(){
+		carAmount--;
+	}
+	public int getCarAmount(){
+		return carAmount;
+	}
+	
 }
