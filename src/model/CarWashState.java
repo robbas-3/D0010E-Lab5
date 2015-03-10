@@ -43,6 +43,12 @@ public class CarWashState extends SimState{
 	}
 	
 	
+	public double getFastTime(){
+		return randomFastWash.next();
+	}
+	public double getSlowTime(){
+		return randomSlowWash.next();
+	}
 	
 	public int emptySlowCarWashes(){
 		int spots = slowCarWash.size();
