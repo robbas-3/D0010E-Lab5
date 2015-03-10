@@ -112,6 +112,7 @@ public class CarWashState extends SimState{
 				fcw.setCar(car);
 				car.stopQueue();
 				setIdleTime();
+				setQueueTime(car);
 				setChanged();
 				notifyObservers(car);
 				return fcw;
@@ -122,6 +123,7 @@ public class CarWashState extends SimState{
 				scw.setCar(car);
 				car.stopQueue();
 				setIdleTime();
+				setQueueTime(car);
 				setChanged();
 				notifyObservers(car);
 				return scw;
@@ -144,6 +146,9 @@ public class CarWashState extends SimState{
 		idleTimeTemp = System.currentTimeMillis() - idleTimeTemp;
 		idleTime += emptyFastCarWashes() * idleTimeTemp + emptySlowCarWashes() * idleTimeTemp;
 		idleTimeTemp = System.currentTimeMillis();
+	}
+	private void setQueueTime(Car car){
+		queueTime += car.getQueueTime();
 	}
 	
 	public int getQueueSize(){
