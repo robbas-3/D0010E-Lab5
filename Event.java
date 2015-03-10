@@ -57,9 +57,9 @@ public class Event implements Comparable <Event> {
 			return 0;
 		}
 		else if(this.eventTime<otherEvent.eventTime){
-			return 1;
+			return -1;
 		}
 		else {
-			return -1;
+			return 1;
 		}
 	}
