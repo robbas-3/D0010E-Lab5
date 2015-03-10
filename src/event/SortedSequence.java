@@ -8,7 +8,7 @@ import java.util.List;
 public class SortedSequence {
 	// PriorityQueue<Event> priQueue = new PriorityQueue<Event>();
 	
-	List<Event>sortedEventList = new ArrayList<Event>();
+	ArrayList<Event> sortedEventList = new ArrayList<Event>();
 
 	/**
 	 * 
