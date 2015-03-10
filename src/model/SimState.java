@@ -10,6 +10,10 @@ public class SimState extends Observable {
 	private double time;
 	private Event currentEvent;
 	
+	public SimState(){
+		
+	}
+	
 	public double getTime(){
 		return time;
 	}

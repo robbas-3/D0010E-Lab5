@@ -26,8 +26,6 @@ public class CarWashState extends SimState{
 			slowCarWash.add(new SlowCarWash());
 		}
 		
-		
-		
 	}
 	
 	public int emptySlowCarWashes(){
@@ -81,6 +79,10 @@ public class CarWashState extends SimState{
 	
 	public int getQueueSize(){
 		return queueSize;
+	}
+	
+	public double getIdleTime(){
+		return idleTime;
 	}
 	
 }

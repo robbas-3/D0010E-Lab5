@@ -20,7 +20,6 @@ public class CarWashEvent extends Event{
 
 	private void cleanCar(){
 		carWash.cleanCar();
-		
 	}
-	
+
 }
