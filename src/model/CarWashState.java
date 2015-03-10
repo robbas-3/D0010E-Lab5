@@ -34,6 +34,8 @@ public class CarWashState extends SimState{
 			slowCarWash.add(new SlowCarWash());
 		}
 		
+		time = System.currentTimeMillis();
+		
 		this.queueSize = queueSize;
 		
 		this.seed = seed;
@@ -148,6 +150,6 @@ public class CarWashState extends SimState{
 	}
 	
 	public double getTime(){
-		return time;
+		return System.currentTimeMillis() - time;
 	}
 }
