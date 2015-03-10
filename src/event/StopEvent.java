@@ -25,16 +25,16 @@ public class StopEvent extends Event {
 	
 	@Override
 	public void execEvent(SimState state, EventQueue eventQueue) {
-		// hmm gör något kul här
-		simulator.stop();
+	
+		state.setEvent(this);
 		eventQueue.getSortedSequence().clearSeq();
-		// behöver utvecklas mer??
+		simulator.stop();
 		
 	}
 
 	@Override
 	public void createNextEvent(double time, Event event) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 }
