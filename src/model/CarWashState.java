@@ -11,7 +11,7 @@ public class CarWashState extends SimState{
 	private ArrayList<Car> carQueue;
 
 	private int queueSize;
-	private int rejectedCarsSize;
+	private int rejectedCarsSize = 0;
 	private double idleTime;
 	private double queueTime;
 	
@@ -20,13 +20,15 @@ public class CarWashState extends SimState{
 	private ExponentialRandomStream ers;
 	private UniformRandomStream urs;
 	
-	public CarWashState(int seed, int fastAmount, int slowAmount){
+	public CarWashState(int seed, int fastAmount, int slowAmount, int queueSize){
 		for(int i = 0; i < fastAmount; i++){
 			fastCarWash.add(new FastCarWash());
 		}
 		for(int i = 0; i < slowAmount; i++){
 			slowCarWash.add(new SlowCarWash());
 		}
+		
+		this.queueSize = queueSize;
 		
 		carFactory = new CarFactory();
 	}
