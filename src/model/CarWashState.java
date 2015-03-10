@@ -12,7 +12,7 @@ public class CarWashState extends SimState{
 
 	private int queueSize;
 	private int rejectedCarsSize = 0;
-	private double idleTime;
+	private double idleTime, idleTimeTemp;
 	private double queueTime;
 	private int seed;
 	private double lower, upper;
@@ -36,6 +36,7 @@ public class CarWashState extends SimState{
 		
 		time = System.currentTimeMillis();
 		idleTime = 0;
+		idleTime = System.currentTimeMillis();
 		
 		this.queueSize = queueSize;
 		
@@ -112,7 +113,7 @@ public class CarWashState extends SimState{
 				car.stopQueue();
 				setIdleTime();
 				setChanged();
-				notifyObservers();
+				notifyObservers(car);
 				return fcw;
 			}
 		}
@@ -122,7 +123,7 @@ public class CarWashState extends SimState{
 				car.stopQueue();
 				setIdleTime();
 				setChanged();
-				notifyObservers();
+				notifyObservers(car);
 				return scw;
 			}
 		}
@@ -140,7 +141,9 @@ public class CarWashState extends SimState{
 	}
 	
 	private void setIdleTime(){
-		idleTime += emptyFastCarWashes() * (System.currentTimeMillis() - time) + emptySlowCarWashes() * (System.currentTimeMillis() - time);
+		idleTimeTemp = System.currentTimeMillis() - idleTimeTemp;
+		idleTime += emptyFastCarWashes() * idleTimeTemp + emptySlowCarWashes() * idleTimeTemp;
+		idleTimeTemp = System.currentTimeMillis();
 	}
 	
 	public int getQueueSize(){
