@@ -2,6 +2,7 @@ package gui;
 
 import java.util.Observable;
 
+import event.ArriveEvent;
 import event.Event;
 import model.Car;
 import model.CarWashState;
@@ -36,7 +37,7 @@ public class CarWashView extends SimView {
 		write("---------------------------");
 	    write("Total idle matchine time: %.2f", CWState.getIdleTime());
 	    write("Total queueing time: %.2f", CWState.getTime());
-	    write("Mean queueing time: %.2f", CWState. ); 
+	    write("Mean queueing time: %.2f", CWState.meanQueueingTime() ); 
 	    write("Rejected cars: %d", CWState.getRejectedCars());
 	}
 	
@@ -48,11 +49,11 @@ public class CarWashView extends SimView {
 		Car c = (Car)arg;
 		
 		String id = "-";
-		if ( instanceof ArriveEvent){
-			
+		if (ev instanceof ArriveEvent){
+			id = 
 		}
 		
-		if ( instanceof LeavEvent){
+		if (ev instanceof LeavEvent){
 			
 			
 		}
