@@ -2,6 +2,7 @@ package gui;
 
 import java.util.Observable;
 
+import event.LeaveEvent;
 import event.ArriveEvent;
 import event.Event;
 import event.StopEvent;
@@ -55,7 +56,7 @@ public class CarWashView extends SimView {
 			id = Integer.toString(c.getId()); 
 		}
 		
-		if (ev instanceof LeavEvent){
+		if (ev instanceof LeaveEvent){
 			id = Integer.toString(c.getId());
 		}
 		write("%-8.2f%-6d%-6d%-5s%-11s%-10.2f%-11.2f%-11d%-10d",
