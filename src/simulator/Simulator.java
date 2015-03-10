@@ -9,5 +9,10 @@ public class Simulator {
 	private void Driver(){
 		
 	}
-	
+	public void start(){
+		
+	}
+	public void stop(){
+		
+	}
 }
