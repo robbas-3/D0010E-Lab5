@@ -163,6 +163,9 @@ public class CarWashState extends SimState{
 	public double getIdleTime(){
 		return idleTime;
 	}
+	public double getQueueTime(){
+		return queueTime;
+	}
 	
 	public CarFactory getCarFactory(){
 		return carFactory;
