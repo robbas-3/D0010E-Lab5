@@ -11,9 +11,9 @@ import model.SimState;
 public abstract class Event implements Comparable <Event> {
 	
 	//public SimState state;
-	private SortedSequence sortedSequence;
+	
 	private String name;
-	public double eventTime;
+	private double eventTime;
 
 	public Event(double time, String s) {
 		this.eventTime = time;
@@ -43,11 +43,9 @@ public abstract class Event implements Comparable <Event> {
 	 *            event
 	 */
 	public void createNewEvent(SortedSequence sortedSequence, Event event) {
-		this.sortedSequence.addNsort(event);
+		sortedSequence.addNsort(event);
 	}
-	public void createNextEvent(double time){
-		//Event newEvent = new Event(time);
-	}
+	public abstract void createNextEvent(double time,Event event);
 
 	/**
 	 * 
