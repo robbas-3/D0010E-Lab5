@@ -25,6 +25,8 @@ public class CarWashView extends SimView {
 		 
 		 write("Seed = %d", CWState.);//seed
 	     write("Max Queue size: %d", CWState.);// Max queue size
+	     write("-----------------------------------");
+	     write("%-8s%-6s%-6s%-5s%-11s%-10s%-11s%-11s%-10s", "Time", "Fast", "Slow", "Id", "Event", "IdleTime", "QueueTime", "QueueSize", "Rejected");
 		 
 		
 	}
