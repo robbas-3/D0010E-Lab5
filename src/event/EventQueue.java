@@ -11,7 +11,7 @@ public class EventQueue {
 	 * Checking if the queue has another element.
 	 */
 	public Boolean hasNext() {
-		if (sortSeq.getSize() > 0) {
+		if (sortSeq.getSize() == 0) {
 			System.out.println("finns inga mer event.");
 			return false;
 		} else {
