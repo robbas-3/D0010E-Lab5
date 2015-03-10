@@ -52,12 +52,11 @@ public class CarWashView extends SimView {
 		
 		String id = "-";
 		if (ev instanceof ArriveEvent){
-			id = ; 
+			id = Integer.toString(c.getId()); 
 		}
 		
 		if (ev instanceof LeavEvent){
-			
-			
+			id = Integer.toString(c.getId());
 		}
 		write("%-8.2f%-6d%-6d%-5s%-11s%-10.2f%-11.2f%-11d%-10d",
                 ev.getEventTime(),
@@ -71,7 +70,7 @@ public class CarWashView extends SimView {
                 CWState.getRejectedCars());
 		
 		if(ev instanceof StopEvent) {
-            Writelast();
+			Writelast();
 		}
 		
 	}
