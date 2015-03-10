@@ -3,6 +3,7 @@ package gui;
 import java.util.Observable;
 
 import event.Event;
+import model.Car;
 import model.CarWashState;
 import model.SimState;
 
@@ -43,7 +44,8 @@ public class CarWashView extends SimView {
 		
 		
 		super.update(o, arg);
-		Event e = (Event)arg;
+		Event ev = (Event)arg;
+		Car c = (Car)arg;
 		
 		String id = "-";
 		if ( instanceof ArriveEvent){
@@ -55,15 +57,15 @@ public class CarWashView extends SimView {
 			
 		}
 		write("%-8.2f%-6d%-6d%-5s%-11s%-10.2f%-11.2f%-11d%-10d",
-                e.getEventTime(),
+                ev.getEventTime(),
                 CWState.fastCarWashes(),
                 CWState.slowCarWashes(),
                 id,
-                e.getName(),
+                ev.getName(),
                 CWState.getIdleTime(),
-                CWState.getQueueTime(),
+                c.getQueueTime(),
                 CWState.getQueueSize(),
-                CWState.getRejected());
+                CWState.getRejectedCars());
 	}
 	
 }
