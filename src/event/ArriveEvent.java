@@ -3,8 +3,13 @@ package event;
 import model.CarFactory;
 import model.CarWashState;
 import model.SimState;
+import random.ExponentialRandomStream;
+import random.UniformRandomStream;
 
 public class ArriveEvent extends Event {
+	UniformRandomStream randomFastWash;
+	UniformRandomStream randomSlowWash;
+	ExponentialRandomStream arrivalRandomTime;
 	CarWashState state;
 	EventQueue eventQueue;
 	CarFactory carFactory;
@@ -30,11 +35,17 @@ public class ArriveEvent extends Event {
 		
 //		state.getIdleTime+= // ska utveckla denna
 		// queue changes
-	if(this.state.emptyFastCarWashes()!=0 && this.state.emptySlowCarWashes()!=0){
-		this.state.addCar(carFactory.createCar());
+	if(this.state.emptyFastCarWashes()!=0 || this.state.emptySlowCarWashes()!=0){
+		if(this.state.addCar(carFactory.createCar())){
+			
+		}
+		
+//		LeaveEvent newLeaveEvent = new LeaveEvent(arriveTime, "Leave");
+		createNewEvent(eventQueue.getSortedSequence(),new LeaveEvent(arriveTime,"Leave")); // ändra till rätt tid.
 //		setChanged();
 //		notifyObservers();
 	}
+	
 		
 	}
 
