@@ -1,5 +1,8 @@
 package event;
 
+import model.SimState;
+import simulator.Simulator;
+
 /**
  * Stopevent is a generalEvent which stops the simulation.
  * 
@@ -7,8 +10,9 @@ package event;
  * 
  */
 public class StopEvent extends Event {
-	public StopEvent(double time) {
-		super(time,"Stop");
+	private Simulator simulator;
+	public StopEvent(double time, String s) {
+		super(time,s);
 	}
 
 	/**
@@ -18,10 +22,19 @@ public class StopEvent extends Event {
 	 * @param eventQueue
 	 *            clearing eventQueue from all future events.
 	 */
+	
+	@Override
 	public void execEvent(SimState state, EventQueue eventQueue) {
 		// hmm gör något kul här
-		state.stop();
+		simulator.stop();
 		eventQueue.getSortedSequence().clearSeq();
 		// behöver utvecklas mer??
+		
+	}
+
+	@Override
+	public void createNextEvent(double time, Event event) {
+		// TODO Auto-generated method stub
+		
 	}
 }
