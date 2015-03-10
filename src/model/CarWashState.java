@@ -183,4 +183,9 @@ public class CarWashState extends SimState{
 	public double getTime(){
 		return System.currentTimeMillis() - time;
 	}
+public double meanQueueingTime() {
+		
+		return (getQueueCars() == 0) ? 0 :  Car.getQueueTime() / //totala bilar ;
+	}
+}
 }
