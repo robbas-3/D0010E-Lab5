@@ -108,7 +108,6 @@ public class CarWashState extends SimState{
 		for(FastCarWash fcw:fastCarWash){
 			if(fcw.isEmpty()){
 				fcw.setCar(car);
-				car.stopQueue();
 				setChanged();
 				notifyObservers();
 				return fcw;
@@ -117,7 +116,6 @@ public class CarWashState extends SimState{
 		for(SlowCarWash scw:slowCarWash){
 			if(scw.isEmpty()){
 				scw.setCar(car);
-				car.stopQueue();
 				setChanged();
 				notifyObservers();
 				return scw;
