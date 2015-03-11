@@ -41,6 +41,7 @@ public class Simulator {
 			if(eq.hasNext()){
 				if(eq.getSortedSequence().getElement(0).getEventTime() < cws.getTime()){
 					System.out.println(eq.getSortedSequence().getElement(0).getName() + " " + eq.getSortedSequence().getElement(0).getEventTime() );
+					//System.out.println(eq.getSortedSequence().getSize());
 					eq.next().execEvent(cws,eq);
 				}
 			}

@@ -31,9 +31,7 @@ public abstract class Event implements Comparable <Event> {
 	 *            making it occur and jumps to next one
 	 * @return
 	 */
-	public void execEvent(SimState state,EventQueue eventQueue){
-		
-	}
+	public abstract void execEvent(SimState state,EventQueue eventQueue);
 
 	
 	/**

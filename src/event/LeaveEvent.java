@@ -1,5 +1,7 @@
 package event;
 
+import java.lang.Thread.State;
+
 import model.CarWash;
 import model.CarWashState;
 import model.SimState;
@@ -13,9 +15,10 @@ CarWash carWash;
 	}
 
 	
-	public void execEvent(CarWashState state, EventQueue eventQueue) {
+	public void execEvent(SimState sState, EventQueue eventQueue) {
 		// TODO Auto-generated method stub
 		state.setEvent(this);
+		
 		carWash.emptyCarWash();
 		if(state.getCarQueueSize()!=0)
 			// ta första bilen i kön (stått i kö längst) state.carQueue.SHABLAM.

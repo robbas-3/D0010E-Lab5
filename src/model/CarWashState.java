@@ -34,7 +34,7 @@ public class CarWashState extends SimState{
 		for(int i = 0; i < slowAmount; i++){
 			slowCarWash.add(new SlowCarWash());
 		}
-		
+		carQueue = new ArrayList<Car>();
 		idleTime = 0;
 		idleTime = System.currentTimeMillis();
 		

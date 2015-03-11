@@ -14,7 +14,7 @@ public class CarWashEvent extends Event{
 		
 	}
 	
-	public void execEvent(SimState state,EventQueue eventQueue,CarWash carWash){
+	public void execEvent(SimState state,EventQueue eventQueue){
 		state.setEvent(this);
 		cleanCar();
 		createNextEvent(washTime,new LeaveEvent(washTime, "Leave",this.carWash),eventQueue);

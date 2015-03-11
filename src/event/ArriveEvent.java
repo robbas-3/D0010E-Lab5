@@ -24,7 +24,8 @@ public class ArriveEvent extends Event {
 		/**
 		 * updates state and queue
 		 */
-	public void execEvent(CarWashState state,EventQueue eventQueue) {
+	public void execEvent(SimState sState,EventQueue eventQueue) {
+		
 		
 		state.setEvent(this);
 		if(state.getCarQueueSize()!=0){
