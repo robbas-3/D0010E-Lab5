@@ -26,7 +26,7 @@ CarWashState state;
 				//createNextEvent(double time,Event event,EventQueue eventQueue); och CarWashEvent(double time,String s, CarWash carWash)
 				createNextEvent(state.getFastTime(),new CarWashEvent(state.getFastTime(),"",state.addCar((state.getCarNRemove(state.getCarQueueSize()-1)))),eventQueue);
 			}
-			else if(state.emptySlowCarWashes()!=0){
+			else if(state.emptyFastCarWashes()==0 && state.emptySlowCarWashes()!=0){
 				createNextEvent(state.getSlowTime(),new CarWashEvent(state.getSlowTime(),"",state.addCar((state.getCarNRemove(state.getCarQueueSize()-1)))),eventQueue);
 			}
 		}
