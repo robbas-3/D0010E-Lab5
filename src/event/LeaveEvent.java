@@ -6,19 +6,18 @@ import model.SimState;
 
 public class LeaveEvent extends Event {
 CarWashState state;
-	public LeaveEvent( double time,String s) {
+CarWash carWash;
+	public LeaveEvent( double time,String s,CarWash carWash) {
 		super(time,s);
-		
+		this.carWash = carWash;
 	}
 
 	
 	public void execEvent(CarWashState state, EventQueue eventQueue) {
 		// TODO Auto-generated method stub
 		state.setEvent(this);
-		if(state.getCarQueueSize()==0){
-			// queue empty carwash machine +1 vilken maskin var bilen i??
-		}
-		else{
+		carWash.emptyCarWash();
+		if(state.getCarQueueSize()!=0)
 			// ta första bilen i kön (stått i kö längst) state.carQueue.SHABLAM.
 			// carFromQueue.carWashEvent-->LeaveEvent
 			if(state.emptyFastCarWashes()!=0){
@@ -30,7 +29,7 @@ CarWashState state;
 				createNextEvent(state.getFastTime(),new ArriveEvent(state.getFastTime(),"Arrive",eventQueue,state),eventQueue);
 			}
 		}
-	}
+	
 
 
 	@Override
