@@ -11,7 +11,6 @@ import simulator.Simulator;
  */
 public class StartEvent extends Event {
 	private Simulator simulator;
-	private EventQueue eventQueue;
 	private CarWashState cWS;
 	/**
 	 * Skuggning
@@ -27,15 +26,15 @@ public class StartEvent extends Event {
 
 
 	public void execEvent(SimState state,EventQueue eventQueue) {
-		// hmm gör något kul här
+		
 		simulator.start();
 		state.setEvent(this);
-		createNextEvent(cWS.arrivalTime(),new ArriveEvent(cWS.arrivalTime(),"Arrive",eventQueue,cWS));
+		createNextEvent(cWS.arrivalTime(),new ArriveEvent(cWS.arrivalTime(),"Arrive",eventQueue,cWS),eventQueue);
 		
 	}
 
 	
-	public void createNextEvent(double time, Event event) {
+	public void createNextEvent(double time, Event event,EventQueue eventQueue) {
 		
 		createNewEvent(eventQueue.getSortedSequence(),event);
 	}
