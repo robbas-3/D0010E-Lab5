@@ -2,39 +2,49 @@ package event;
 
 import model.SimState;
 
-
-
-/*
- * Skapar bland annat event som skickas till sorted Seq som sorterar den
- * denna sorterade sekvens sparas sedan i eventQueue
+/**
+ * Abstract class Event which implements comparable
  */
-public abstract class Event implements Comparable <Event> {
-	
-	
-	
+public abstract class Event implements Comparable<Event> {
+
 	private String name;
 	private double eventTime;
 
+	/**
+	 * The constructor
+	 * 
+	 * @param time
+	 *            time of the event
+	 * @param s
+	 *            name of the event
+	 */
 	public Event(double time, String s) {
 		this.eventTime = time;
 		this.name = s;
 	}
 
+	/**
+	 * Method to get the eventTime
+	 * 
+	 * @return returns the event time.
+	 */
 	public double getEventTime() {
 		return eventTime;
 	}
+
 	/**
+	 * An abstract method which will execute an event.
 	 * 
 	 * @param state
 	 *            sending state so it can be changed accordingly.
 	 * @param eventQueue
-	 *            making it occur and jumps to next one
+	 *            making the event occur and creates a future event
 	 * @return
 	 */
-	public abstract void execEvent(SimState state,EventQueue eventQueue);
+	public abstract void execEvent(SimState state, EventQueue eventQueue);
 
-	
 	/**
+	 * Method to create a new event and adding it to the sequence of events
 	 * 
 	 * @param sortedSequence
 	 *            sending sortedSeq so it can be updated with the newly created
@@ -43,25 +53,39 @@ public abstract class Event implements Comparable <Event> {
 	public void createNewEvent(SortedSequence sortedSequence, Event event) {
 		sortedSequence.addNsort(event);
 	}
-	public abstract void createNextEvent(Event event,EventQueue eventQueue);
 
 	/**
+	 * Abstract method for creating a future event which will need to be
+	 * concrete in the specific events.
+	 * 
+	 * @param event
+	 *            the future event
+	 * @param eventQueue
+	 *            queue of events
+	 */
+	public abstract void createNextEvent(Event event, EventQueue eventQueue);
+
+	/**
+	 * Method to get the name of an event
 	 * 
 	 * @return returning the private name
 	 */
 	public String getName() {
 		return this.name;
 	}
-	
-	@Override
+
+	/**
+	 * Method to compare if this events time value is the same,smaller or bigger
+	 * than another event If the time is equal we return 0. If this event time
+	 * is lower than the other event we return 1. If this event time is bigger
+	 * than the other event we return -1.
+	 */
 	public int compareTo(Event otherEvent) {
-		if(this.eventTime==otherEvent.eventTime){
+		if (this.eventTime == otherEvent.eventTime) {
 			return 0;
-		}
-		else if(this.eventTime<otherEvent.eventTime){
+		} else if (this.eventTime < otherEvent.eventTime) {
 			return 1;
-		}
-		else {
+		} else {
 			return -1;
 		}
 	}
