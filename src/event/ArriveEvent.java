@@ -29,19 +29,18 @@ public class ArriveEvent extends Event {
 	public void execEvent(SimState sState,EventQueue eventQueue) {
 		
 		state.setEvent(this);
-		
 			Car car = state.getCarFactory().createCar();
 			CarWash carWash = state.addCar(car);
 			if(carWash != null){
-				
+				state.enterCarWash(car);
 				if(this.state.emptyFastCarWashes()!=0){
-					createNextEvent(new LeaveEvent(state.getFastTime()+state.getTime(),"Leave",carWash, car),eventQueue);
+					createNextEvent(new LeaveEvent(state.getFastTime(),"Leave",carWash, car),eventQueue);
 				}
 				else if(this.state.emptySlowCarWashes()!=0){
-					createNextEvent(new LeaveEvent(state.getSlowTime()+state.getTime(),"Leave",carWash, car),eventQueue);
+					createNextEvent(new LeaveEvent(state.getSlowTime(),"Leave",carWash, car),eventQueue);
 				}
 		
-		}
+			}
 	}
 	
 	@Override

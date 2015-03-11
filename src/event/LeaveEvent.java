@@ -22,22 +22,39 @@ Car car;
 		// TODO Auto-generated method stub
 		state = (CarWashState)sState;
 		state.setEvent(this);
-		if(carWash != null){
-			cleanCar();
-			carWash.emptyCarWash();
-		}
+		state.leaveCarWash(car);
+	
+		cleanCar();
+		carWash.emptyCarWash();
+		
+		
+		if(state.getCarQueueSize() > 0){
 			
-		if(state.getCarQueueSize()!=0)
-			// ta första bilen i kön (stått i kö längst) state.carQueue.SHABLAM.
-			// carFromQueue.carWashEvent-->LeaveEvent
-			if(state.emptyFastCarWashes()!=0){
-				// måste få bil från kön  
-				//createNextEvent(double time,Event event,EventQueue eventQueue); och ArriveEvent(double time, String s,EventQueue eventQueue, CarWashState state)
-				//createNextEvent(new ArriveEvent(state.getFastTime()+state.getTime(),"Arrive",eventQueue,state),eventQueue);
+			Car car = state.getCarNRemove(0);
+			CarWash carWash = state.addCar(car);
+			int x1, x2;
+			x1 = state.emptyFastCarWashes();
+			x2 = state.emptySlowCarWashes();
+			
+				if(x1 > -1){
+					createNextEvent(new LeaveEvent(state.getFastTime()+state.getTime(),"Leave",carWash, car),eventQueue);
+				}
+				else if(x2 > -1){
+					createNextEvent(new LeaveEvent(state.getSlowTime()+state.getTime(),"Leave",carWash, car),eventQueue);
+				}
 			}
-			else if(state.emptyFastCarWashes()==0 && state.emptySlowCarWashes()!=0){
-				//createNextEvent(new ArriveEvent(state.getFastTime()+state.getTime(),"Arrive",eventQueue,state),eventQueue);
-			}
+
+//		if(state.getCarQueueSize()!=0)
+//			// ta första bilen i kön (stått i kö längst) state.carQueue.SHABLAM.
+//			// carFromQueue.carWashEvent-->LeaveEvent
+//			if(state.emptyFastCarWashes()!=0){
+//				// måste få bil från kön  
+//				//createNextEvent(double time,Event event,EventQueue eventQueue); och ArriveEvent(double time, String s,EventQueue eventQueue, CarWashState state)
+//				//createNextEvent(new ArriveEvent(state.getFastTime()+state.getTime(),"Arrive",eventQueue,state),eventQueue);
+//			}
+//			else if(state.emptyFastCarWashes()==0 && state.emptySlowCarWashes()!=0){
+//				//createNextEvent(new ArriveEvent(state.getFastTime()+state.getTime(),"Arrive",eventQueue,state),eventQueue);
+//			}
 		}
 	
 

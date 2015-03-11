@@ -1,5 +1,6 @@
 package gui;
 
+import java.text.DecimalFormat;
 import java.util.Observable;
 
 import event.LeaveEvent;
@@ -35,7 +36,7 @@ public class CarWashView extends SimView {
 		 
 		
 	}
-	private void Writelast(){
+	public void Writelast(){
 		write("---------------------------");
 	    write("Total idle matchine time: %.2f", CWState.getIdleTime());
 	    write("Total queueing time: %.2f", CWState.getTime());

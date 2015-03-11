@@ -111,9 +111,6 @@ public class CarWashState extends SimState{
 				car.stopQueue();
 				setIdleTime();
 				setQueueTime(car);
-				setChanged();
-				notifyObservers(car);
-				
 				return fcw;
 			}
 		}
@@ -123,13 +120,9 @@ public class CarWashState extends SimState{
 				car.stopQueue();
 				setIdleTime();
 				setQueueTime(car);
-				setChanged();
-				notifyObservers(car);
-
 				return scw;
 			}
 		}
-		
 		if(carQueue.size() < queueSize){
 			carQueue.add(car);
 			car.startQueue();
@@ -149,7 +142,7 @@ public class CarWashState extends SimState{
 		idleTimeTemp = System.currentTimeMillis();
 	}
 	private void setQueueTime(Car car){
-		queueTime += car.getQueueTime()/1000;
+		queueTime += car.getQueueTime();
 	}
 	
 	public int getQueueSize(){
@@ -162,10 +155,19 @@ public class CarWashState extends SimState{
 		return queueCars;
 	}
 	public double getIdleTime(){
-		return idleTime;
+		return 0;
 	}
 	public double getQueueTime(){
-		return queueTime;
+		return 0;
+	}
+	
+	public void leaveCarWash(Car car){
+		setChanged();
+		notifyObservers(car);
+	}
+	public void enterCarWash(Car car){
+		setChanged();
+		notifyObservers(car);
 	}
 	
 	public CarFactory getCarFactory(){
@@ -188,7 +190,7 @@ public class CarWashState extends SimState{
 	}
 //  Istället för FIFO tar element från kön och tar bort objektet från kön
 	public Car getCarNRemove(int i){
-		Car carElement =getCarQueue().get(i);
+		Car carElement =getCarQueue().get(0);
 		getCarQueue().remove(i);
 		return carElement;
 	}
