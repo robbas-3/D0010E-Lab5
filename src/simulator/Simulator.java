@@ -22,7 +22,7 @@ public class Simulator {
 		int slowAmount = 2;
 		int queueSize = 5;
 		double fastLower = 2.8;
-		double fastUpper = 5.7;
+		double fastUpper = 4.7;
 		double slowUpper = 6.7;
 		double slowLower = 3.5;
 		double lambda = 2.0;
