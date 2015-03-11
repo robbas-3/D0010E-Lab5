@@ -47,7 +47,7 @@ public class CarWashView extends SimView {
 		
 		
 		super.update(o, arg);
-		Event ev = (Event)arg;
+		Event ev = CWState.getCurrentEvent();
 		Car c = (Car)arg;
 		
 		String id = "-";

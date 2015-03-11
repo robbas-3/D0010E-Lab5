@@ -15,7 +15,7 @@ public abstract class SimView implements Observer{
         state.addObserver(this);
 	}
 	public void update(Observable o, Object arg) {
-	        Event e = (Event)arg;
+	        //Event e = (Event)arg;
 	}
 	    
 	protected void write(Object o) {

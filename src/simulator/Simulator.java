@@ -18,8 +18,8 @@ public class Simulator {
 	
 	private void Driver(){
 		int seed = 1234;
-		int fastAmount = 3;
-		int slowAmount = 4;
+		int fastAmount = 2;
+		int slowAmount = 2;
 		int queueSize = 5;
 		double fastLower = 2.8;
 		double fastUpper = 5.7;
@@ -40,7 +40,7 @@ public class Simulator {
 		while(on && cws.getTime() < 15.0){
 			if(eq.hasNext()){
 				if(eq.getSortedSequence().getElement(0).getEventTime() < cws.getTime()){
-					System.out.println(eq.getSortedSequence().getElement(0).getName() + " " + eq.getSortedSequence().getElement(0).getEventTime() );
+					//System.out.println(eq.getSortedSequence().getElement(0).getName() + " " + eq.getSortedSequence().getElement(0).getEventTime() );
 					//System.out.println(eq.getSortedSequence().getSize());
 					eq.next().execEvent(cws,eq);
 				}

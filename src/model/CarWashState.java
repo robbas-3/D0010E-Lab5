@@ -115,6 +115,7 @@ public class CarWashState extends SimState{
 				setQueueTime(car);
 				setChanged();
 				notifyObservers(car);
+				
 				return fcw;
 			}
 		}
@@ -126,6 +127,7 @@ public class CarWashState extends SimState{
 				setQueueTime(car);
 				setChanged();
 				notifyObservers(car);
+
 				return scw;
 			}
 		}

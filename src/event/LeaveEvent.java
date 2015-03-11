@@ -17,6 +17,7 @@ CarWash carWash;
 	
 	public void execEvent(SimState sState, EventQueue eventQueue) {
 		// TODO Auto-generated method stub
+		state = (CarWashState)sState;
 		state.setEvent(this);
 		
 		carWash.emptyCarWash();
