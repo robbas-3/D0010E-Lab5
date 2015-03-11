@@ -1,42 +1,49 @@
 package event;
+
 import model.CarWashState;
 import model.SimState;
 import simulator.Simulator;
 
 /**
  * StartEvent is an Event that starts the simulation.
- * 
- * @author Robin
- * 
  */
 public class StartEvent extends Event {
 	private Simulator simulator;
 	private CarWashState cWS;
+	
 	/**
-	 * Skuggning
+	 * Constructor
 	 * 
-	 * @param state
-	 *            sending state so it can be changed accordingly.
-	 * @param eventQueue
-	 *            making it occur and jumps to next one
+	 * @param time
+	 *            time to start the simulation
+	 * 
+	 * @param s
+	 *            name of the event
+	 * @param simulator
+	 *            which simulator we want to start.
+	 * 
 	 */
-	public StartEvent(double time,String s,Simulator simulator) {
-		super(time,s);
-		this.simulator=simulator;
+	public StartEvent(double time, String s, Simulator simulator) {
+		super(time, s);
+		this.simulator = simulator;
 	}
 
-
-	public void execEvent(SimState state,EventQueue eventQueue) {
-		cWS = (CarWashState)state;
+	/**
+	 * the execute method for start event, changning it to start, starts the
+	 * simulation.
+	 */
+	public void execEvent(SimState state, EventQueue eventQueue) {
+		cWS = (CarWashState) state;
 		simulator.start();
 		state.setEvent(this);
-		//createNextEvent(cWS.arrivalTime(),new ArriveEvent(cWS.arrivalTime(),"Arrive",eventQueue,cWS),eventQueue);
-		
+
 	}
 
-	
-	public void createNextEvent(Event event,EventQueue eventQueue) {
-		
-		createNewEvent(eventQueue.getSortedSequence(),event);
+	/**
+	 * 
+	 */
+	public void createNextEvent(Event event, EventQueue eventQueue) {
+
+		createNewEvent(eventQueue.getSortedSequence(), event);
 	}
 }
