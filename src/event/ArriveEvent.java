@@ -30,7 +30,7 @@ public class ArriveEvent extends Event {
 		
 		state.setEvent(this);
 		if(state.getCarQueueSize()!=0 && state.emptySlowCarWashes() != 0 && state.emptyFastCarWashes() != 0){
-			createNextEvent(state.getSlowTime(),new CarWashEvent(state.getSlowTime(),"",state.addCar((state.getCarNRemove(0)))),eventQueue);
+			createNextEvent(state.getSlowTime(),new LeaveEvent(state.getSlowTime(),"Leave",state.addCar((state.getCarNRemove(0)))),eventQueue);
 		}
 		else{
 			CarWash carWash = state.addCar(carFactory.createCar());
@@ -39,11 +39,11 @@ public class ArriveEvent extends Event {
 				
 				if(this.state.emptyFastCarWashes()!=0){
 					//System.out.println("Fast");
-					createNextEvent(state.getFastTime(),new CarWashEvent(state.getFastTime(),"",carWash),eventQueue);
+					createNextEvent(state.getFastTime(),new LeaveEvent(state.getFastTime(),"Leave",carWash),eventQueue);
 				}
 				else if(this.state.emptySlowCarWashes()!=0){
 					//System.out.println("Slow");
-					createNextEvent(state.getSlowTime(),new CarWashEvent(state.getSlowTime(),"",carWash),eventQueue);
+					createNextEvent(state.getSlowTime(),new LeaveEvent(state.getSlowTime(),"Leave",carWash),eventQueue);
 				}
 				else{
 					state.addCar(carFactory.createCar());
