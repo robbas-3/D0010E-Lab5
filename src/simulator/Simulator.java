@@ -24,7 +24,7 @@ public class Simulator {
 		double fastLower = 2.8;
 		double fastUpper = 5.7;
 		double slowUpper = 6.7;
-		double slowLower = 4.5;
+		double slowLower = 3.5;
 		double lambda = 2.0;
 		
 		CarWashState cws = new CarWashState(seed, fastAmount, slowAmount, queueSize, fastLower, fastUpper, slowUpper, slowLower, lambda);

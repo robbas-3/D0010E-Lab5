@@ -60,8 +60,8 @@ public class CarWashView extends SimView {
 		}
 		write("%-8.2f%-6d%-6d%-5s%-11s%-10.2f%-11.2f%-11d%-10d",
                 ev.getEventTime(),
-                CWState.fastCarWashes(),
-                CWState.slowCarWashes(),
+                CWState.emptyFastCarWashes(),
+                CWState.emptySlowCarWashes(),
                 id,
                 ev.getName(),
                 CWState.getIdleTime(),

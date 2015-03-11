@@ -82,7 +82,6 @@ public class CarWashState extends SimState{
 	
 	public int emptySlowCarWashes(){
 		int spots = slowCarWash.size();
-		
 		for(SlowCarWash scw:slowCarWash){
 			if(!scw.isEmpty()){
 				spots--;
@@ -93,7 +92,6 @@ public class CarWashState extends SimState{
 	
 	public int emptyFastCarWashes(){
 		int spots = fastCarWash.size();
-		
 		for(FastCarWash fcw:fastCarWash){
 			if(!fcw.isEmpty()){
 				spots--;
@@ -132,7 +130,7 @@ public class CarWashState extends SimState{
 			}
 		}
 		
-		if(carQueue.size() <= queueSize){
+		if(carQueue.size() < queueSize){
 			carQueue.add(car);
 			car.startQueue();
 			queueCars++;
@@ -140,7 +138,6 @@ public class CarWashState extends SimState{
 			rejectedCarsSize ++;
 			getCarFactory().rejected();
 		}
-
 		return null;
 	}
 	
