@@ -38,10 +38,9 @@ public class Simulator {
 			eq.getSortedSequence().addNsort(new ArriveEvent(time, "Arrive", eq, cws));
 		}
 		System.out.println(cws.getTime());
-		while(on){
+		while(on && cws.getTime() < 15){
 			if(eq.hasNext()){
 				if(eq.getSortedSequence().getElement(0).getEventTime() > cws.getTime()){
-					System.out.println(cws.getTime());
 					eq.next().execEvent(cws,eq);
 				}
 			}
