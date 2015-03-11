@@ -11,8 +11,9 @@ import simulator.Simulator;
  */
 public class StopEvent extends Event {
 	private Simulator simulator;
-	public StopEvent(double time, String s) {
+	public StopEvent(double time, String s,Simulator simulator) {
 		super(time,s);
+		this.simulator = simulator;
 	}
 
 	/**
