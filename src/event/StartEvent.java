@@ -27,10 +27,10 @@ public class StartEvent extends Event {
 
 
 	public void execEvent(SimState state,EventQueue eventQueue) {
-		
+		cWS = (CarWashState)state;
 		simulator.start();
 		state.setEvent(this);
-		createNextEvent(cWS.arrivalTime(),new ArriveEvent(cWS.arrivalTime(),"Arrive",eventQueue,cWS),eventQueue);
+		//createNextEvent(cWS.arrivalTime(),new ArriveEvent(cWS.arrivalTime(),"Arrive",eventQueue,cWS),eventQueue);
 		
 	}
 

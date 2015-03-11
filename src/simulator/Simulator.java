@@ -35,12 +35,12 @@ public class Simulator {
 		double time = 0;// Test
 		while(time < 15.0){
 			time += cws.arrivalTime();
-			eq.getSortedSequence().addNsort(new ArriveEvent(time, "Arrive", eq, cws));
+			eq.getSortedSequence().addNsort(new ArriveEvent(time, "Arrive", eq, cws));		
 		}
 		while(on && cws.getTime() < 15.0){
 			if(eq.hasNext()){
 				if(eq.getSortedSequence().getElement(0).getEventTime() < cws.getTime()){
-					System.out.println(eq.getSortedSequence().getElement(0).getEventTime());
+					System.out.println(eq.getSortedSequence().getElement(0).getName());
 					eq.next().execEvent(cws,eq);
 				}
 			}
