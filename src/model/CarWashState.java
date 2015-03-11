@@ -143,7 +143,7 @@ public class CarWashState extends SimState{
 	}
 	
 	private void setIdleTime(){
-		idleTimeTemp = System.currentTimeMillis() - idleTimeTemp;
+		idleTimeTemp = (System.currentTimeMillis() - idleTimeTemp)/1000;
 		idleTime += emptyFastCarWashes() * idleTimeTemp + emptySlowCarWashes() * idleTimeTemp;
 		idleTimeTemp = System.currentTimeMillis();
 	}
@@ -179,7 +179,9 @@ public class CarWashState extends SimState{
 	public int fastCarWashes(){
 		return fastCarWash.size();
 	}
-	
+	public ArrayList<Car> getCarQueue(){
+		return carQueue;
+	}
 	public double meanQueueingTime() {
 		return (getQueueCars() == 0) ? 0 :  getQueueTime() / carFactory.getCarAmount() ;
 	}

@@ -12,7 +12,7 @@ public class EventQueue {
 	 */
 	public Boolean hasNext() {
 		if (sortSeq.getSize()  == 0) {
-			System.out.println("finns inga mer event.");
+			//System.out.println("finns inga mer event.");
 			return false;
 		} else {
 			return true;

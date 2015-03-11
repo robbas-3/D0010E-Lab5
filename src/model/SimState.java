@@ -15,7 +15,7 @@ public abstract class SimState extends Observable {
 	}
 	
 	public double getTime(){
-		return System.currentTimeMillis() - time;
+		return (System.currentTimeMillis() - time)/1000;
 	}
 	
 	public Event getCurrentEvent(){

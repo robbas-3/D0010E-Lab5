@@ -30,16 +30,18 @@ public class Simulator {
 		CarWashState cws = new CarWashState(seed, fastAmount, slowAmount, queueSize, fastLower, fastUpper, slowUpper, slowLower, lambda);
 		CarWashView cwv = new CarWashView(cws);
 		EventQueue eq = new EventQueue(new SortedSequence());
-		eq.getSortedSequence().addNsort(new StartEvent(0,"Start"));;
+		eq.getSortedSequence().addNsort(new StartEvent(0,"Start", this));;
 		
-		double time = 0;// Next arrivalTime fungerar inte. Fixar det senare.
+		double time = 0;// Test
 		while(time < 15.0){
-			eq.getSortedSequence().addNsort(new ArriveEvent(time++, "Arrive", eq, cws));
+			time += cws.arrivalTime();
+			eq.getSortedSequence().addNsort(new ArriveEvent(time, "Arrive", eq, cws));
 		}
-		
+		System.out.println(cws.getTime());
 		while(on){
 			if(eq.hasNext()){
-				if(eq.getSortedSequence().getElement(0).getEventTime() < cws.getTime()){
+				if(eq.getSortedSequence().getElement(0).getEventTime() > cws.getTime()){
+					System.out.println(cws.getTime());
 					eq.next().execEvent(cws,eq);
 				}
 			}
