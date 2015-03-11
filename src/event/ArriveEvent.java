@@ -8,7 +8,8 @@ import model.FastCarWash;
 import model.SimState;
 import model.SlowCarWash;
 
-/**Event for an arriving Car. extends Event
+/**
+ * Event for an arriving Car. extends Event
  *
  */
 public class ArriveEvent extends Event {
@@ -18,7 +19,8 @@ public class ArriveEvent extends Event {
 	EventQueue eventQueue;
 	CarFactory carFactory;
 
-	/**The constructor.
+	/**
+	 * The constructor.
 	 * 
 	 * @param time
 	 *            time of the even
@@ -72,10 +74,13 @@ public class ArriveEvent extends Event {
 	}
 
 	/**
-	 * Method for creating a future event
-	 * uses a method for creating a new method
-	 * @param event the event which we want to create
-	 * @param eventQueue the queue of events which will need to be updated.
+	 * Method for creating a future event uses a method for creating a new
+	 * method
+	 * 
+	 * @param event
+	 *            the event which we want to create
+	 * @param eventQueue
+	 *            the queue of events which will need to be updated.
 	 */
 	public void createNextEvent(Event event, EventQueue eventQueue) {
 		createNewEvent(eventQueue.getSortedSequence(), event);
