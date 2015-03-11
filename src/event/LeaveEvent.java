@@ -19,7 +19,7 @@ CarWash carWash;
 		// TODO Auto-generated method stub
 		state = (CarWashState)sState;
 		state.setEvent(this);
-		
+		cleanCar();
 		carWash.emptyCarWash();
 		if(state.getCarQueueSize()!=0)
 			// ta första bilen i kön (stått i kö längst) state.carQueue.SHABLAM.
@@ -41,6 +41,9 @@ CarWash carWash;
 		createNewEvent(eventQueue.getSortedSequence(),event);
 		
 		
+	}
+	private void cleanCar(){
+		carWash.cleanCar();
 	}
 
 }
