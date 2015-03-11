@@ -1,16 +1,28 @@
 package model;
 
+/**
+ * Class that represents the car.
+ */
 public class Car {
-	
+
 	private int id;
-	
-	public Car(int id){
+
+	/**
+	 * Method for car with an id.
+	 * 
+	 * @param id
+	 */
+	public Car(int id) {
 		this.id = id;
 	}
-	
-	public int getId(){
+
+	/**
+	 * Method to return the private variable id of the car.
+	 * 
+	 * @return
+	 */
+	public int getId() {
 		return id;
 	}
 
-	
 }
