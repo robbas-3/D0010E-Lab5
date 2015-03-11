@@ -43,7 +43,7 @@ public abstract class Event implements Comparable <Event> {
 	public void createNewEvent(SortedSequence sortedSequence, Event event) {
 		sortedSequence.addNsort(event);
 	}
-	public abstract void createNextEvent(double time,Event event,EventQueue eventQueue);
+	public abstract void createNextEvent(Event event,EventQueue eventQueue);
 
 	/**
 	 * 

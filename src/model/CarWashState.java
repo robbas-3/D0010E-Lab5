@@ -134,6 +134,8 @@ public class CarWashState extends SimState{
 			carQueue.add(car);
 			car.startQueue();
 			queueCars++;
+			setChanged();
+			notifyObservers(car);
 		}else{
 			rejectedCarsSize ++;
 			getCarFactory().rejected();
@@ -147,7 +149,7 @@ public class CarWashState extends SimState{
 		idleTimeTemp = System.currentTimeMillis();
 	}
 	private void setQueueTime(Car car){
-		queueTime += car.getQueueTime();
+		queueTime += car.getQueueTime()/1000;
 	}
 	
 	public int getQueueSize(){

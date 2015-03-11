@@ -1,5 +1,6 @@
 package event;
 
+import model.Car;
 import model.CarFactory;
 import model.CarWash;
 import model.CarWashState;
@@ -27,33 +28,24 @@ public class ArriveEvent extends Event {
 		 */
 	public void execEvent(SimState sState,EventQueue eventQueue) {
 		
-		
 		state.setEvent(this);
-		if(state.getCarQueueSize()!=0 && state.emptySlowCarWashes() != 0 && state.emptyFastCarWashes() != 0){
-			createNextEvent(state.getSlowTime(),new LeaveEvent(state.getSlowTime(),"Leave",state.addCar((state.getCarNRemove(0)))),eventQueue);
-		}
-		else{
-			CarWash carWash = state.addCar(carFactory.createCar());
-			
+		
+			Car car = state.getCarFactory().createCar();
+			CarWash carWash = state.addCar(car);
 			if(carWash != null){
 				
 				if(this.state.emptyFastCarWashes()!=0){
-					//System.out.println("Fast");
-					createNextEvent(state.getFastTime(),new LeaveEvent(state.getFastTime(),"Leave",carWash),eventQueue);
+					createNextEvent(new LeaveEvent(state.getFastTime()+state.getTime(),"Leave",carWash, car),eventQueue);
 				}
 				else if(this.state.emptySlowCarWashes()!=0){
-					//System.out.println("Slow");
-					createNextEvent(state.getSlowTime(),new LeaveEvent(state.getSlowTime(),"Leave",carWash),eventQueue);
+					createNextEvent(new LeaveEvent(state.getSlowTime()+state.getTime(),"Leave",carWash, car),eventQueue);
 				}
-				else{
-					state.addCar(carFactory.createCar());
-				}
-			}
+		
 		}
 	}
 	
 	@Override
-	public void createNextEvent(double time, Event event,EventQueue eventQueue) {
+	public void createNextEvent(Event event,EventQueue eventQueue) {
 		createNewEvent(eventQueue.getSortedSequence(),event);
 	}
 	

@@ -35,7 +35,7 @@ public class StartEvent extends Event {
 	}
 
 	
-	public void createNextEvent(double time, Event event,EventQueue eventQueue) {
+	public void createNextEvent(Event event,EventQueue eventQueue) {
 		
 		createNewEvent(eventQueue.getSortedSequence(),event);
 	}

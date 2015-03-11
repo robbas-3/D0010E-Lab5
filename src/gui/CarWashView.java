@@ -65,8 +65,8 @@ public class CarWashView extends SimView {
                 id,
                 ev.getName(),
                 CWState.getIdleTime(),
-                c.getQueueTime(),
-                CWState.getQueueSize(),
+                CWState.getQueueTime(),
+                CWState.getCarQueueSize(),
                 CWState.getRejectedCars());
 		
 		if(ev instanceof StopEvent) {

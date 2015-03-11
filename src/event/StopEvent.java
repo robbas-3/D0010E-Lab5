@@ -34,7 +34,7 @@ public class StopEvent extends Event {
 	}
 
 	@Override
-	public void createNextEvent(double time, Event event,EventQueue eventQueue) {
+	public void createNextEvent(Event event,EventQueue eventQueue) {
 		
 		
 	}
