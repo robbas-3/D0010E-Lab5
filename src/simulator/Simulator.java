@@ -19,13 +19,13 @@ public class Simulator {
 	private void Driver(){
 		int seed = 1234;
 		int fastAmount = 2;
-		int slowAmount = 4;
-		int queueSize = 7;
+		int slowAmount = 2;
+		int queueSize = 5;
 		double fastLower = 2.8;
-		double fastUpper = 5.6;
-		double slowLower = 4.5;
+		double fastUpper = 4.6;
+		double slowLower = 3.5;
 		double slowUpper = 6.7;
-		double lambda = 1.5;
+		double lambda = 2.0;
 		
 		CarWashState cws = new CarWashState(seed, fastAmount, slowAmount, queueSize, fastLower, fastUpper, slowLower, slowUpper, lambda);
 		CarWashView cwv = new CarWashView(cws);
@@ -40,8 +40,6 @@ public class Simulator {
 		while(on && cws.getTime() < 15.0){
 			if(eq.hasNext()){
 				if(eq.getSortedSequence().getElement(0).getEventTime() < cws.getTime()){
-					//System.out.println(eq.getSortedSequence().getElement(0).getName() + " " + eq.getSortedSequence().getElement(0).getEventTime() );
-					//System.out.println(eq.getSortedSequence().getSize());
 					eq.next().execEvent(cws,eq);
 				}
 			}

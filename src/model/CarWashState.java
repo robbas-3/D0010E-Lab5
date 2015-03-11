@@ -13,7 +13,7 @@ public class CarWashState extends SimState{
 	private int queueSize;
 	private int rejectedCarsSize = 0;
 	private double idleTime, idleTimeTemp;
-	private double queueTime;
+	private double queueTime, queueTimeTemp;
 	private int seed;
 	private int queueCars;
 	
@@ -24,7 +24,7 @@ public class CarWashState extends SimState{
 	private ExponentialRandomStream arrivalRandomTime;
 	double fastLower, fastUpper, slowLower, slowUpper, lambda;
 	
-	public CarWashState(int seed, int fastAmount, int slowAmount, int queueSize, double fastLower, double fastUpper ,double slowUpper, double slowLower, double lambda){
+	public CarWashState(int seed, int fastAmount, int slowAmount, int queueSize, double fastLower, double fastUpper ,double slowLower, double slowUpper, double lambda){
 		fastCarWash = new ArrayList<FastCarWash>();
 		slowCarWash = new ArrayList<SlowCarWash>();
 		
@@ -37,6 +37,8 @@ public class CarWashState extends SimState{
 		carQueue = new ArrayList<Car>();
 		idleTime = 0;
 		idleTimeTemp = System.currentTimeMillis();
+		queueTime = 0;
+		queueTimeTemp = System.currentTimeMillis();
 		
 		this.queueSize = queueSize;
 		
@@ -120,13 +122,8 @@ public class CarWashState extends SimState{
 		if(carQueue.size() < queueSize){
 			carQueue.add(car);
 			queueCars++;
-			setQueueTime(car);
-			setChanged();
-			notifyObservers(car);
 		}else{
 			rejectedCarsSize ++;
-			setQueueTime(car);
-			getCarFactory().rejected();
 		}
 		return null;
 	}
@@ -136,8 +133,11 @@ public class CarWashState extends SimState{
 		idleTime += emptyFastCarWashes() * idleTimeTemp + emptySlowCarWashes() * idleTimeTemp;
 		idleTimeTemp = System.currentTimeMillis();
 	}
-	private void setQueueTime(Car car){
-		queueTime += car.getQueueTime();
+	private void setQueueTime(){
+		
+		queueTime += (System.currentTimeMillis() - queueTimeTemp) * carQueue.size();
+		queueTimeTemp = System.currentTimeMillis();
+	
 	}
 	
 	public int getQueueSize(){
@@ -153,21 +153,19 @@ public class CarWashState extends SimState{
 		return idleTime;
 	}
 	public double getQueueTime(){
-		return queueTime;
+		return queueTime/1000;
 	}
 	
 	public void leaveCarWash(Car car){
-		for(Car cq:carQueue){
-			setQueueTime(car);
-		}
+		setQueueTime();
+		
 		setIdleTime();
 		setChanged();
 		notifyObservers(car);
 	}
 	public void enterCarWash(Car car){
-		for(Car cq:carQueue){
-			setQueueTime(car);
-		}
+		setQueueTime();
+		
 		setIdleTime();
 		setChanged();
 		notifyObservers(car);
@@ -189,7 +187,7 @@ public class CarWashState extends SimState{
 		return carQueue;
 	}
 	public double meanQueueingTime() {
-		return (getQueueCars() == 0) ? 0 :  getQueueTime() / carFactory.getCarAmount() ;
+		return (getQueueCars() == 0) ? 0 :  getQueueTime() / (carFactory.getCarAmount()- rejectedCarsSize) ;
 	}
 //  Istället för FIFO tar element från kön och tar bort objektet från kön
 	public Car getCarNRemove(int i){

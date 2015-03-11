@@ -27,19 +27,15 @@ Car car;
 		cleanCar();
 		carWash.emptyCarWash();
 		
-		
 		if(state.getCarQueueSize() > 0){
-			
-			Car car = state.getCarNRemove(0);
-			CarWash carWash = state.addCar(car);
-			int x1, x2;
-			x1 = state.emptyFastCarWashes();
-			x2 = state.emptySlowCarWashes();
-			
-				if(x1 > -1){
+				if(state.emptyFastCarWashes() > 0){
+					Car car = state.getCarNRemove(0);
+					CarWash carWash = state.addCar(car);
 					createNextEvent(new LeaveEvent(state.getFastTime()+state.getTime(),"Leave",carWash, car),eventQueue);
 				}
-				else if(x2 > -1){
+				else if(state.emptySlowCarWashes()> 0){
+					Car car = state.getCarNRemove(0);
+					CarWash carWash = state.addCar(car);
 					createNextEvent(new LeaveEvent(state.getSlowTime()+state.getTime(),"Leave",carWash, car),eventQueue);
 				}
 			}
