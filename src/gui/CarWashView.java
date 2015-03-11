@@ -39,7 +39,7 @@ public class CarWashView extends SimView {
 	public void Writelast(){
 		write("---------------------------");
 	    write("Total idle matchine time: %.2f", CWState.getIdleTime());
-	    write("Total queueing time: %.2f", CWState.getTime());
+	    write("Total queueing time: %.2f", CWState.getQueueTime());
 	    write("Mean queueing time: %.2f", CWState.meanQueueingTime() ); 
 	    write("Rejected cars: %d", CWState.getRejectedCars());
 	}
