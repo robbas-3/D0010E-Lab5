@@ -27,15 +27,19 @@ public class ArriveEvent extends Event {
 	public void execEvent(CarWashState state,EventQueue eventQueue) {
 		
 		state.setEvent(this);
-		
-		if(this.state.emptyFastCarWashes()!=0){
-			createNextEvent(state.getFastTime(),new CarWashEvent(state.getFastTime(),"",state.addCar(carFactory.createCar())),eventQueue);
-		}
-		else if(this.state.emptySlowCarWashes()!=0){
-			createNextEvent(state.getSlowTime(),new CarWashEvent(state.getSlowTime(),"",state.addCar(carFactory.createCar())),eventQueue);
+		if(state.getCarQueueSize()!=0){
+			createNextEvent(state.getSlowTime(),new CarWashEvent(state.getSlowTime(),"",state.addCar((state.getCarNRemove(0)))),eventQueue);
 		}
 		else{
-			state.addCar(carFactory.createCar());
+			if(this.state.emptyFastCarWashes()!=0){
+				createNextEvent(state.getFastTime(),new CarWashEvent(state.getFastTime(),"",state.addCar(carFactory.createCar())),eventQueue);
+			}
+			else if(this.state.emptySlowCarWashes()!=0){
+				createNextEvent(state.getSlowTime(),new CarWashEvent(state.getSlowTime(),"",state.addCar(carFactory.createCar())),eventQueue);
+			}
+			else{
+				state.addCar(carFactory.createCar());
+			}
 		}
 	}
 	
