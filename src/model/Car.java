@@ -3,24 +3,21 @@ package model;
 public class Car {
 	
 	private int id;
-	private double queueTime = 0;
+	private double queueTime = 0;;
 	
 	public Car(int id){
 		this.id = id;
+		queueTime = System.currentTimeMillis();
 	}
 	
 	public int getId(){
 		return id;
 	}
 	
-	public void startQueue(){
-		queueTime = System.currentTimeMillis();
-	}
-	public void stopQueue(){
-		queueTime = (System.currentTimeMillis() - queueTime)/1000;
-	}
 	public double getQueueTime(){
-		return queueTime;
+		double time = System.currentTimeMillis() - queueTime;
+		queueTime = System.currentTimeMillis();
+		return time/1000;
 	}
 	
 }
