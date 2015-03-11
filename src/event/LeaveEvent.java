@@ -1,5 +1,6 @@
 package event;
 
+import model.CarWash;
 import model.CarWashState;
 import model.SimState;
 
@@ -20,13 +21,14 @@ CarWashState state;
 		else{
 			// ta första bilen i kön (stått i kö längst) state.carQueue.SHABLAM.
 			// carFromQueue.carWashEvent-->LeaveEvent
-			if(state.emptyFastCarWashes()!=0){												// måste få bil från kön
-				createNextEvent(state.getFastTime(),new CarWashEvent(state.getFastTime(),"",state.addCar((state.getCarQueue().get(state.getCarQueueSize()-1))));
+			if(state.emptyFastCarWashes()!=0){
+				// måste få bil från kön  
+				//createNextEvent(double time,Event event,EventQueue eventQueue); och CarWashEvent(double time,String s, CarWash carWash)
+				createNextEvent(state.getFastTime(),new CarWashEvent(state.getFastTime(),"",state.addCar((state.getCarNRemove(state.getCarQueueSize()-1)))),eventQueue);
 			}
 			else if(state.emptySlowCarWashes()!=0){
-				createNextEvent(state.getSlowTime(),new CarWashEvent(state.getSlowTime(),"",state.addCar(car)),eventQueue);
+				createNextEvent(state.getSlowTime(),new CarWashEvent(state.getSlowTime(),"",state.addCar((state.getCarNRemove(state.getCarQueueSize()-1)))),eventQueue);
 			}
-			
 		}
 	}
 
