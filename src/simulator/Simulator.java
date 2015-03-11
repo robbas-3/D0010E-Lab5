@@ -40,7 +40,7 @@ public class Simulator {
 		while(on && cws.getTime() < 15.0){
 			if(eq.hasNext()){
 				if(eq.getSortedSequence().getElement(0).getEventTime() < cws.getTime()){
-					System.out.println(eq.getSortedSequence().getElement(0).getName());
+					System.out.println(eq.getSortedSequence().getElement(0).getName() + " " + eq.getSortedSequence().getElement(0).getEventTime() );
 					eq.next().execEvent(cws,eq);
 				}
 			}
