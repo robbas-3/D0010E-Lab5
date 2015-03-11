@@ -2,7 +2,7 @@ package event;
 
 import model.SimState;
 
-//import states.SimState;
+
 
 /*
  * Skapar bland annat event som skickas till sorted Seq som sorterar den
@@ -10,7 +10,7 @@ import model.SimState;
  */
 public abstract class Event implements Comparable <Event> {
 	
-	//public SimState state;
+	
 	
 	private String name;
 	private double eventTime;
@@ -35,7 +35,7 @@ public abstract class Event implements Comparable <Event> {
 		
 	}
 
-	// hmm gör något kul här
+	
 	/**
 	 * 
 	 * @param sortedSequence
@@ -45,7 +45,7 @@ public abstract class Event implements Comparable <Event> {
 	public void createNewEvent(SortedSequence sortedSequence, Event event) {
 		sortedSequence.addNsort(event);
 	}
-	public abstract void createNextEvent(double time,Event event);
+	public abstract void createNextEvent(double time,Event event,EventQueue eventQueue);
 
 	/**
 	 * 
