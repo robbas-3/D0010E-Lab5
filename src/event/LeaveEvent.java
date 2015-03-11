@@ -16,18 +16,18 @@ CarWashState state;
 		// TODO Auto-generated method stub
 		state.setEvent(this);
 		if(state.getCarQueueSize()==0){
-			// queue empty carwash machine +1
+			// queue empty carwash machine +1 vilken maskin var bilen i??
 		}
 		else{
 			// ta första bilen i kön (stått i kö längst) state.carQueue.SHABLAM.
 			// carFromQueue.carWashEvent-->LeaveEvent
 			if(state.emptyFastCarWashes()!=0){
 				// måste få bil från kön  
-				//createNextEvent(double time,Event event,EventQueue eventQueue); och CarWashEvent(double time,String s, CarWash carWash)
-				createNextEvent(state.getFastTime(),new CarWashEvent(state.getFastTime(),"",state.addCar((state.getCarNRemove(state.getCarQueueSize()-1)))),eventQueue);
+				//createNextEvent(double time,Event event,EventQueue eventQueue); och ArriveEvent(double time, String s,EventQueue eventQueue, CarWashState state)
+				createNextEvent(state.getFastTime(),new ArriveEvent(state.getFastTime(),"Arrive",eventQueue,state),eventQueue);
 			}
 			else if(state.emptyFastCarWashes()==0 && state.emptySlowCarWashes()!=0){
-				createNextEvent(state.getSlowTime(),new CarWashEvent(state.getSlowTime(),"",state.addCar((state.getCarNRemove(state.getCarQueueSize()-1)))),eventQueue);
+				createNextEvent(state.getFastTime(),new ArriveEvent(state.getFastTime(),"Arrive",eventQueue,state),eventQueue);
 			}
 		}
 	}
