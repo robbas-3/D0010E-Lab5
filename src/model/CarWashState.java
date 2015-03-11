@@ -186,10 +186,10 @@ public class CarWashState extends SimState{
 		return (getQueueCars() == 0) ? 0 :  getQueueTime() / carFactory.getCarAmount() ;
 	}
 //  Istället för FIFO tar element från kön och tar bort objektet från kön
-//	public Car getCarNRemove(int i){
-//		Car carElement =getCarQueue().get(i);
-//		getCarQueue().remove(i);
-//		return carElement;
-//	}
+	public Car getCarNRemove(int i){
+		Car carElement =getCarQueue().get(i);
+		getCarQueue().remove(i);
+		return carElement;
+	}
 }
 
