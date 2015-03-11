@@ -17,15 +17,15 @@ public class CarWashEvent extends Event{
 	public void execEvent(SimState state,EventQueue eventQueue){
 		state.setEvent(this);
 		cleanCar();
-		createNextEvent(washTime,new LeaveEvent(washTime, "Leave"));
+		createNextEvent(washTime,new LeaveEvent(washTime, "Leave"),eventQueue);
 	}
 
 	private void cleanCar(){
 		carWash.cleanCar();
 	}
 
-
-	public void createNextEvent(double time, Event event) {
+	@Override
+	public void createNextEvent(double time, Event event,EventQueue eventQueue) {
 		
 		createNewEvent(eventQueue.getSortedSequence(),new LeaveEvent(time,"Leave"));
 		
