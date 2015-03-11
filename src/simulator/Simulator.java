@@ -4,6 +4,7 @@ import event.ArriveEvent;
 import event.EventQueue;
 import event.SortedSequence;
 import event.StartEvent;
+import event.StopEvent;
 import gui.CarWashView;
 import model.CarWashState;
 
@@ -31,20 +32,20 @@ public class Simulator {
 		CarWashView cwv = new CarWashView(cws);
 		EventQueue eq = new EventQueue(new SortedSequence());
 		eq.getSortedSequence().addNsort(new StartEvent(0,"Start", this));;
+		eq.getSortedSequence().addNsort(new StopEvent(15,"Stop", this));;
 		
 		double time = 0;// Test
 		while(time < 15.0){
 			time += cws.arrivalTime();
 			eq.getSortedSequence().addNsort(new ArriveEvent(time, "Arrive", eq, cws));		
 		}
-		while(on && cws.getTime() < 15.0){
+		while(on){
 			if(eq.hasNext()){
 				if(eq.getSortedSequence().getElement(0).getEventTime() < cws.getTime()){
 					eq.next().execEvent(cws,eq);
 				}
 			}
 		}
-		cwv.Writelast();
 		
 	}
 	public void start(){

@@ -22,6 +22,11 @@ public abstract class SimState extends Observable {
 		return currentEvent;
 	}
 	
+	public void end(){
+		setChanged();
+		notifyObservers();
+	}
+	
 	public void setEvent(Event event){
 		this.currentEvent = event;
 	}

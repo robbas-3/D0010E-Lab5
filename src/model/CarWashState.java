@@ -170,6 +170,14 @@ public class CarWashState extends SimState{
 		setChanged();
 		notifyObservers(car);
 	}
+
+	public void end(){
+		setQueueTime();
+		
+		setIdleTime();
+		setChanged();
+		notifyObservers();
+	}
 	
 	public CarFactory getCarFactory(){
 		return carFactory;

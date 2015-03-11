@@ -29,6 +29,7 @@ public class StopEvent extends Event {
 	
 		state.setEvent(this);
 		eventQueue.getSortedSequence().clearSeq();
+		state.end();
 		simulator.stop();
 		
 	}

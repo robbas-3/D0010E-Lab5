@@ -33,7 +33,16 @@ public class CarWashView extends SimView {
 	     write("Max Queue size: %d", CWState.getQueueSize());
 	     write("-----------------------------------");
 	     write("%-8s%-6s%-6s%-5s%-11s%-10s%-11s%-11s%-10s", "Time", "Fast", "Slow", "Id", "Event", "IdleTime", "QueueTime", "QueueSize", "Rejected");
-		 
+	     write("%-8.2f%-6d%-6d%-5s%-11s%-10.2f%-11.2f%-11d%-10d",
+	                0.0,
+	                CWState.emptyFastCarWashes(),
+	                CWState.emptySlowCarWashes(),
+	                "-",
+	                "Start",
+	                CWState.getIdleTime(),
+	                CWState.getQueueTime(),
+	                CWState.getCarQueueSize(),
+	                CWState.getRejectedCars());
 		
 	}
 	public void Writelast(){
