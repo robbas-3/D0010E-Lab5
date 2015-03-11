@@ -20,8 +20,9 @@ public class StartEvent extends Event {
 	 * @param eventQueue
 	 *            making it occur and jumps to next one
 	 */
-	public StartEvent(double time,String s) {
+	public StartEvent(double time,String s,Simulator simulator) {
 		super(time,s);
+		this.simulator=simulator;
 	}
 
 
