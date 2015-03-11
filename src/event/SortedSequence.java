@@ -3,53 +3,40 @@ package event;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Collections;
-import java.util.List;
 
+/**
+ * class to sort events by time
+ * 
+ *
+ */
 public class SortedSequence {
-	// PriorityQueue<Event> priQueue = new PriorityQueue<Event>();
-	
+
 	ArrayList<Event> sortedEventList = new ArrayList<Event>();
 
 	/**
-	 * 
-	 * @param startEvent
-	 *            placing event in seq??
-	 * 
+	 * The constructor.
 	 */
 	public SortedSequence() {
-		
+
 	}
 
 	/**
-	 * Adding event to the sequence, sorting with EventTime.
-	 * {0.14,0.14,0.15,1.0}
-	 * @return 
+	 * Adding event to the sequence, sorting with the event time with help from
+	 * the compareTo method.
+	 * 
 	 */
 	public void addNsort(Event event) {
 		this.sortedEventList.add(event);
-		
+
 		Collections.sort(sortedEventList);
 		Collections.reverse(sortedEventList);
-		}
-//		if (sortedEventList.size() == 0) {
-//			sortedEventList.add(event);
-//			System.out.println("adding " + event + " list empty");
-//		
-//		} else {
-//			for (int i = 0; i < sortedEventList.size();) {
-//				elementBiggerThanInsert(sortedEventList.get(i).getEventTime(),
-//						event.getEventTime(), i, event);
-//				elementSmallerThanInsert(sortedEventList.get(i).getEventTime(),
-//						event.getEventTime(), i, event);
-//				elementSameAsInsert(sortedEventList.get(i).getEventTime(),
-//						event.getEventTime(), i, event);
-//				return;
-//			}
-//		}
-//	}
+	}
 
 	/**
 	 * Removing event from the sequence
+	 * 
+	 * @param index
+	 *            represents which event index in the list we want to remove
 	 */
 	public void removeEvent(int index) throws NoSuchElementException {
 		if (sortedEventList.isEmpty()) {
@@ -61,6 +48,7 @@ public class SortedSequence {
 	}
 
 	/**
+	 * Method for returning the size of the sorted sequence
 	 * 
 	 * @return returns the size of the sequence
 	 */
@@ -69,6 +57,7 @@ public class SortedSequence {
 	}
 
 	/**
+	 * Method for getting element.
 	 * 
 	 * @param k
 	 *            element index
@@ -79,53 +68,10 @@ public class SortedSequence {
 	}
 
 	/**
-	 * clearing seq
+	 * Method for clearing the sequence of all events.
 	 */
 	public void clearSeq() {
 		sortedEventList.clear();
 	}
-	
-//	private void elementBiggerThanInsert(double elementTime, double insertTime,
-//			int index, Event event) {
-//		for(int i =0; i<sortedEventList.size();i++){
-//			
-//		
-//			if (elementTime > insertTime) {
-//				System.out.println("adding " + event + " before "
-//						+ sortedEventList.get(index));
-//				sortedEventList.add(index, event);
-//				
-//				return;
-//			}	
-//		}
-//	}
 
-//	private void elementSameAsInsert(double elementTime, double insertTime,
-//			int index, Event event) {
-//		for(int i =0; i<sortedEventList;i++){
-//		if (elementTime == insertTime) {
-//			System.out.println("adding " + event + " after "
-//					+ sortedEventList.get(index));
-//			sortedEventList.add(index+1,event);
-//			
-//			return;
-//		}
-//		}
-//		
-//	}
-//	
-
-//	private void elementSmallerThanInsert(double elementTime,
-//			double insertTime, int index, Event event) {
-//		for(int i =0; i<sortedEventList.size();i++){
-//		if (elementTime < insertTime) {
-//			System.out.println("adding " + event + " after "
-//					+ sortedEventList.get(index));
-//			sortedEventList.add(index+1,event);
-//			
-//			return;
-//		}
-//		}
-//	}
-	
 }
