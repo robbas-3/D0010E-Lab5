@@ -24,34 +24,31 @@ public class ArriveEvent extends Event {
 		/**
 		 * updates state and queue
 		 */
-	public void execEvent() {
+	public void execEvent(CarWashState state,EventQueue eventQueue) {
 		
 		state.setEvent(this);
 		
-		if(this.state.emptyFastCarWashes()!=0 || this.state.emptySlowCarWashes()!=0){
-			createNextEvent(fastCWorSlowCW(),new CarWashEvent(fastCWorSlowCW(),"",this.state.addCar(carFactory.createCar())));
+		if(this.state.emptyFastCarWashes()!=0){
+			createNextEvent(state.getFastTime(),new CarWashEvent(state.getFastTime(),"",state.addCar(carFactory.createCar())),eventQueue);
+		}
+		else if(this.state.emptySlowCarWashes()!=0){
+			createNextEvent(state.getSlowTime(),new CarWashEvent(state.getSlowTime(),"",state.addCar(carFactory.createCar())),eventQueue);
+		}
+		else{
+			state.addCar(carFactory.createCar());
 		}
 	}
 	
-
-	public void createNextEvent(double time, Event event) {
+	@Override
+	public void createNextEvent(double time, Event event,EventQueue eventQueue) {
 		createNewEvent(eventQueue.getSortedSequence(),event);
 	}
+	
+	/**
+	 * not used
+	 * @return
+	 */
 	public double fastCWorSlowCW(){
 		return (this.state.addCar(carFactory.createCar())) == this.fCW ? this.state.getFastTime() : this.state.getSlowTime();
 	}
 }
-//arriveTime +=state.getTime();
-// två metoder som ger random slow time och fast. gör ny car wash event då ska jag använda den metoden för att skicka med en tid.
-
-//state.getIdleTime+= // ska utveckla denna
-// queue changes
-//,"",this.state.addCar(carFactory.createCar()))
-//leave event där ska jag också göra en ny carwash event om kön är ledig. eller i simulatorn.
-
-//this.state.setEvent(event);;
-
-//LeaveEvent newLeaveEvent = new LeaveEvent(arriveTime, "Leave");
-//createNewEvent(eventQueue.getSortedSequence(),new CarWashEvent(fastCWorSlowCW(),"",this.state.addCar(carFactory.createCar()))); // ändra till rätt tid.
-//setChanged();
-//notifyObservers();
