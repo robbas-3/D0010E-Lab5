@@ -6,6 +6,7 @@ import java.util.Observable;
 import event.LeaveEvent;
 import event.ArriveEvent;
 import event.Event;
+import event.StartEvent;
 import event.StopEvent;
 import model.Car;
 import model.CarWashState;
@@ -53,10 +54,10 @@ public class CarWashView extends SimView {
 		write("%-8s%-6s%-6s%-5s%-11s%-10s%-11s%-11s%-10s", "Time", "Fast",
 				"Slow", "Id", "Event", "IdleTime", "QueueTime", "QueueSize",
 				"Rejected");
-		write("%-8.2f%-6d%-6d%-5s%-11s%-10.2f%-11.2f%-11d%-10d", 0.0,
-				CWState.emptyFastCarWashes(), CWState.emptySlowCarWashes(),
-				"-", "Start", CWState.getIdleTime(), CWState.getQueueTime(),
-				CWState.getCarQueueSize(), CWState.getRejectedCars());
+//		write("%-8.2f%-6d%-6d%-5s%-11s%-10.2f%-11.2f%-11d%-10d",0.0,
+//				CWState.emptyFastCarWashes(), CWState.emptySlowCarWashes(),
+//				"-","Start", CWState.getIdleTime(), CWState.getQueueTime(),
+//				CWState.getCarQueueSize(), CWState.getRejectedCars());
 
 	}
 
@@ -88,15 +89,22 @@ public class CarWashView extends SimView {
 		if (ev instanceof LeaveEvent) {
 			id = Integer.toString(c.getId());
 		}
+//		if(ev instanceof StartEvent){
+//			id = "-";
+//			
+//			
+//		}
+		
 		write("%-8.2f%-6d%-6d%-5s%-11s%-10.2f%-11.2f%-11d%-10d",
 				ev.getEventTime(), CWState.emptyFastCarWashes(),
 				CWState.emptySlowCarWashes(), id, ev.getName(),
 				CWState.getIdleTime(), CWState.getQueueTime(),
 				CWState.getCarQueueSize(), CWState.getRejectedCars());
-
 		if (ev instanceof StopEvent) {
+			
 			Writelast();
 		}
+		
 
 	}
 
