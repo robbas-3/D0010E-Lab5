@@ -52,24 +52,30 @@ public class ArriveEvent extends Event {
 	 *            sending eventQueue so it can be changed
 	 */
 	public void execEvent(SimState sState, EventQueue eventQueue) {
-
-		state.setEvent(this);
+		
 		Car car = state.getCarFactory().createCar();
 		state.enterCarWash(car);
+		state.setEvent(this);
 
 		if (state.emptyFastCarWashes() > 0) {
 			CarWash carWash = state.addCar(car);
 			createNextEvent(
 					new LeaveEvent(state.getFastTime() + state.getTime(),
 							"Leave", carWash, car), eventQueue);
+			
 		} else if (state.emptySlowCarWashes() > 0) {
 			CarWash carWash = state.addCar(car);
 			createNextEvent(
 					new LeaveEvent(state.getSlowTime() + state.getTime(),
 							"Leave", carWash, car), eventQueue);
+			
 		} else {
 			state.addCar(car);
+			
+			
 		}
+		createNewEvent(eventQueue.getSortedSequence(),new ArriveEvent(state.arrivalTime()+state.getTime(),"Arrive",eventQueue,state));
+	
 
 	}
 
