@@ -26,6 +26,7 @@ public class StartEvent extends Event {
 	public StartEvent(double time, String s, Simulator simulator) {
 		super(time, s);
 		this.simulator = simulator;
+		
 	}
 
 	/**
@@ -33,9 +34,10 @@ public class StartEvent extends Event {
 	 * simulation.
 	 */
 	public void execEvent(SimState state, EventQueue eventQueue) {
+		state.setEvent(this);
 		cWS = (CarWashState) state;
 		simulator.start();
-		state.setEvent(this);
+		createNextEvent(new ArriveEvent(cWS.arrivalTime(),"Arrive",eventQueue,cWS),eventQueue);
 
 	}
 
